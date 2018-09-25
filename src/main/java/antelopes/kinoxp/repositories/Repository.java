@@ -8,6 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+// Class to be extend by other repositories, and define the object in the less more braces
+// ex. public MovieRepository extends Repository<Movie>
+// All methods should be overridden with @Override
 public abstract class Repository<T> {
     protected PreparedStatement preparedStatement;
     protected ResultSet resultSet;
