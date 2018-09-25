@@ -22,6 +22,15 @@ public class Reservation {
         this.customer = customer;
     }
 
+    public Reservation(int id, Movie movie, String date, double time, Seat seat, Customer customer) {
+        this.id = id;
+        this.movie = movie;
+        this.setDate(date);
+        this.time = time;
+        this.seat = seat;
+        this.customer = customer;
+    }
+
     public String getMovieName() {
         return movie.getName();
     }
@@ -32,6 +41,11 @@ public class Reservation {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public void setDate(String date){
+        String[] dateSplit = date.split("-");
+        this.date = LocalDate.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]));
     }
 
     public double getTime() {
