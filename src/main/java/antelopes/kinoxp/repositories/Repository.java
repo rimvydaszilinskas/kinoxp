@@ -28,8 +28,6 @@ public abstract class Repository<T> {
 
     public abstract List<T> getAll();
 
-    public abstract boolean delete(T object);
-
     public abstract boolean delete(int id);
 
     public abstract boolean update(T object);

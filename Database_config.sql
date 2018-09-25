@@ -12,22 +12,23 @@ CREATE TABLE genres(
 	name VARCHAR(45) NOT NULL
 );
 
-DROP TABLE IF EXISTS movie;
-CREATE TABLE movie(
+DROP TABLE IF EXISTS movies;
+CREATE TABLE movies(
 	id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(45) NOT NULL,
     genre INT(5) NOT NULL,
     age_limit INT(2) NOT NULL,
-    FOREIGN KEY movie(genre) REFERENCES genres(id)
+    FOREIGN KEY movies(genre) REFERENCES genres(id)
 );
 
-DROP TABLE IF EXISTS reservation;
-CReATE TABLE reservation(
+DROP TABLE IF EXISTS reservations;
+CREATE TABLE reservations(
 	id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     reservation_id INT(5) NOT NULL,
     seat_number INT(5) NOT NULL,
     date DATE NOT NULL, 
     time varchar(5),
-    customer VARCHAR(45) NOT NULL,
-    FOREIGN KEY reservation(reservation_id) REFERENCES movie(id)
+    customer_id INT(5) NOT NULL,
+    FOREIGN KEY reservations1(reservation_id) REFERENCES movies(id),
+    FOREIGN KEY reservations2(customer_id) REFERENCES customers(id)
 );
