@@ -7,13 +7,13 @@ public class Reservation {
     private Movie movie;
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
-    private double time;
+    private int time;
     private Seat seat;
     private Customer customer;
     private int id;
 
 
-    public Reservation(int id, Movie movie, LocalDate date, double time, Seat seat, Customer customer) {
+    public Reservation(int id, Movie movie, LocalDate date, int time, Seat seat, Customer customer) {
         this.id = id;
         this.movie = movie;
         this.date = date;
@@ -34,11 +34,11 @@ public class Reservation {
         this.date = date;
     }
 
-    public double getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(double time) {
+    public void setTime(int time) {
         this.time = time;
     }
 
