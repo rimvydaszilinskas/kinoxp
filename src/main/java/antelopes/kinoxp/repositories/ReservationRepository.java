@@ -3,12 +3,14 @@ package antelopes.kinoxp.repositories;
 import antelopes.kinoxp.models.Customer;
 import antelopes.kinoxp.models.Movie;
 import antelopes.kinoxp.models.Reservation;
+import antelopes.kinoxp.models.Seat;
 
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
 public class ReservationRepository extends Repository<Reservation> {
+    private SeatRepository seatRepository = new SeatRepository();
     public ReservationRepository() {
         super();
     }
@@ -112,6 +114,15 @@ public class ReservationRepository extends Repository<Reservation> {
     @Override
     public boolean update(Reservation object) {
         try{
+            int oldSeatID = 0;
+            preparedStatement = connection.prepareStatement("SELECT seat_id FROM reservation WHERE id=?");
+            preparedStatement.setInt(1, object.getId());
+
+            resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+                oldSeatID = resultSet.getInt("seat_id");
+            }
             preparedStatement = connection.prepareStatement("UPDATE reservations SET movie_id=?, seat_number=?, date=?, time=? WHERE id=?");
             preparedStatement.setInt(1, object.getMovie().getId());
             preparedStatement.setString(2, object.getSeatNumber());
@@ -120,6 +131,7 @@ public class ReservationRepository extends Repository<Reservation> {
             preparedStatement.setInt(5, object.getId());
 
             if(preparedStatement.executeUpdate() > 0){
+                seatRepository.update(new Seat(oldSeatID, false, ""));
 
             }
         }catch (SQLException ex){

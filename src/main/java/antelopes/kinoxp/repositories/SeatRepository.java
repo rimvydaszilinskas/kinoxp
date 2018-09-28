@@ -11,7 +11,7 @@ public class SeatRepository extends Repository<Seat> {
 
     @Override
     public Seat get(int id) {
-        
+
         return null;
     }
 
