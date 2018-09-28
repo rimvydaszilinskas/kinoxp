@@ -131,8 +131,16 @@ public class ReservationRepository extends Repository<Reservation> {
             preparedStatement.setInt(5, object.getId());
 
             if(preparedStatement.executeUpdate() > 0){
-                seatRepository.update(new Seat(oldSeatID, false, ""));
+                preparedStatement = connection.prepareStatement("UDPATE seats SET booked=0 WHERE id=?");
+                preparedStatement.setInt(1, oldSeatID);
+                if(preparedStatement.execute()) {
+                    preparedStatement = connection.prepareStatement("UPDATE seats SET booked=1 WHERE space=?");
+                    preparedStatement.setString(1, object.getSeatNumber());
 
+                    if (preparedStatement.execute()) {
+                        return true;
+                    }
+                }
             }
         }catch (SQLException ex){
             System.out.println(ex.getSQLState());
@@ -142,6 +150,26 @@ public class ReservationRepository extends Repository<Reservation> {
 
     @Override
     public boolean create(Reservation object) {
+        try{
+            Seat seat = seatRepository.get(object.getSeatNumber());
+            if(seat == null){
+                return false;
+            }
+
+            preparedStatement = connection.prepareStatement("INSERT INTO reservation(movie_id, seat_id, date, time, customer_id) " +
+                    "VALUES(?,?,?,?,?)");
+            preparedStatement.setInt(1, object.getMovie().getId());
+            preparedStatement.setInt(2, seat.getId());
+            preparedStatement.setString(3, object.getDate().toString());
+            preparedStatement.setInt(4, object.getTime());
+            preparedStatement.setInt(5, object.getCustomer().getId());
+
+            if(preparedStatement.executeUpdate() > 0){
+                return true;
+            }
+        }catch (SQLException ex){
+            System.out.println(ex.getSQLState());
+        }
         return false;
     }
 }
