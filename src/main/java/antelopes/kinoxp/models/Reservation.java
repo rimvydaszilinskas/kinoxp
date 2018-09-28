@@ -26,7 +26,7 @@ public class Reservation {
         this.id = id;
         this.movie = movie;
         this.setDate(date);
-        this.time = time;
+        this.time = (int) time;
         this.seat = seat;
         this.customer = customer;
     }
@@ -43,16 +43,12 @@ public class Reservation {
         this.date = date;
     }
 
-<<<<<<< HEAD
     public void setDate(String date){
         String[] dateSplit = date.split("-");
         this.date = LocalDate.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]));
     }
 
-    public double getTime() {
-=======
     public int getTime() {
->>>>>>> 0ee6ad82897da2eb9844a8e6bda86dbff44d76e6
         return time;
     }
 
