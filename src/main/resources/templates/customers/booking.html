@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Booking Customers Page</title>
 </head>
 <body>
@@ -22,68 +21,37 @@
 </p>
 
 
-
 <h2>CUSTOMER DETAILS</h2>
 
-<div class="container">
-    <form action=" ">
-        <div class="row">
-            <div class="col-25">
-                <label for="fname">First Name</label>
-            </div>
-            <div class="col-75">
-                <input type="text" id="fname" name="firstname" placeholder="Your name..">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="lname">Last Name</label>
-            </div>
-            <div class="col-75">
-                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-            </div>
+<form action="">
 
-            <label for="age">Age</label>
-            <div class="col-75">
-                <input type="number" id="age" name="age" placeholder="Your age here..">
-            </div>
-        </div>
+    <p>First Name: </p>
+    <input type="text"   />
+    <p>Last Name: </p>
+    <input type="date"/>
+    <p>Age:</p>
+    <input type="text"/>
+    <p>Movie time: </p>
+    <select id="screeningTime" name="country">
+        <option value="time1">16:00</option>
+        <option value="time2">18:00</option>
+        <option value="time3">20:00</option>
+    </select>
+    <p>Seat:</p>
+    <input type="text" />
+    <select id="country" name="seats">
+        <option value="rowA">1A</option>
+        <option value="rowB">1B</option>
+        <option value="rowC">1C</option>
+        <option value="rowD">1D</option>
+        <option value="rowE">1E</option>
+    </select>
+    <p>
+        <input type="submit" value="Book" class="btn btn-create"/>
+    </p>
 
 
-
-        <div class="row">
-            <div class="col-25">
-                <label >Movie Time</label>
-            </div>
-            <div class="col-75">
-                <select id="screeningTime" name="country">
-                    <option value="time1">16:00</option>
-                    <option value="time2">18:00</option>
-                    <option value="time3">20:00</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="country">Available Seat</label>
-            </div>
-            <div class="col-75">
-                <select id="country" name="seats">
-                    <option value="rowA">1A</option>
-                    <option value="rowB">1B</option>
-                    <option value="rowC">1C</option>
-                    <option value="rowD">1D</option>
-                    <option value="rowE">1E</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="row">
-            <input type="submit" value="Book">
-        </div>
-    </form>
-</div>
-
+</form>
 
 </body>
 </html>
