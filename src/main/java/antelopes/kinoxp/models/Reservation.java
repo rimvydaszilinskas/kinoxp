@@ -8,31 +8,39 @@ public class Reservation {
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     private int time;
-    private Seat seat;
+    private String seatNumber;
     private Customer customer;
     private int id;
 
 
-    public Reservation(int id, Movie movie, LocalDate date, int time, Seat seat, Customer customer) {
+    public Reservation(int id, Movie movie, LocalDate date, int time, String seat, Customer customer) {
         this.id = id;
         this.movie = movie;
         this.date = date;
         this.time = time;
-        this.seat = seat;
+        this.seatNumber = seat;
         this.customer = customer;
     }
 
-    public Reservation(int id, Movie movie, String date, double time, Seat seat, Customer customer) {
+    public Reservation(int id, Movie movie, String date, double time, String seat, Customer customer) {
         this.id = id;
         this.movie = movie;
         this.setDate(date);
         this.time = (int) time;
-        this.seat = seat;
+        this.seatNumber = seat;
         this.customer = customer;
     }
 
     public String getMovieName() {
         return movie.getName();
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
     public LocalDate getDate() {
@@ -56,12 +64,12 @@ public class Reservation {
         this.time = time;
     }
 
-    public Seat getSeat() {
-        return seat;
+    public String getSeatNumber() {
+        return seatNumber;
     }
 
-    public void setSeat(Seat seat) {
-        this.seat = seat;
+    public void setSeatNumber(String seatNumber) {
+        this.seatNumber = seatNumber;
     }
 
     public Customer getCustomer() {

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class MovieRepository extends Repository<Movie> {
+public class MovieRepository extends Repository<Movie> {
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
@@ -70,6 +70,11 @@ public abstract class MovieRepository extends Repository<Movie> {
         }
         return movies;
 
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return false;
     }
 
     public boolean delete(Movie object) {
