@@ -3,19 +3,19 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS customers;
 CREATE TABLE customers(
   id INT(5) NOT NULL PRIMARY KEY auto_increment,
-  space VARCHAR(45) NOT NULL
+  name VARCHAR(45) NOT NULL
 );
 
 DROP TABLE IF EXISTS genres;
 CREATE TABLE genres(
   id INT(5) NOT NULL auto_increment primary key,
-  space VARCHAR(45) NOT NULL
+  name VARCHAR(45) NOT NULL
 );
 
 DROP TABLE IF EXISTS movies;
 CREATE TABLE movies(
   id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  space VARCHAR(45) NOT NULL,
+  name VARCHAR(45) NOT NULL,
   genre INT(5) NOT NULL,
   age_limit INT(2) NOT NULL,
   FOREIGN KEY movies(genre) REFERENCES genres(id)
@@ -40,4 +40,12 @@ CREATE TABLE reservations(
   FOREIGN KEY reservations1(movie_id) REFERENCES movies(id),
   FOREIGN KEY reservations2(customer_id) REFERENCES customers(id),
   FOREIGN KEY reservations3(seat_id) REFERENCES seats(id)
+);
+
+DROP TABLE IF EXISTS employees;
+CREATE TABLE employees(
+  id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(45) NOT NULL,
+  username VARCHAR(45) NOT NULL,
+  password VARCHAR(255) NOT NULL UNIQUE
 );

@@ -8,9 +8,6 @@ import antelopes.kinoxp.repositories.MovieRepository;
 import antelopes.kinoxp.repositories.Repository;
 import antelopes.kinoxp.repositories.ReservationRepository;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-
 
 public class MainController {
     private Repository<Customer> customerRepository;
@@ -25,7 +22,6 @@ public class MainController {
 
     @GetMapping("/")
     public String index(){
-        return "/";
-
+        return "index";
     }
 }
