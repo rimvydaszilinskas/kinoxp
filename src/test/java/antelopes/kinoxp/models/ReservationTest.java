@@ -10,9 +10,9 @@ import static org.junit.Assert.*;
 public class ReservationTest {
 
     private Movie movie = new Movie(1, "Avatar", "Horror", 18);
-    private Seat seat = new Seat(1, true, "1A");
+    private Seat seat = new Seat(1, "1A", 1, 1);
     private Customer customer = new Customer(1, "Stefan");
-    private Reservation reservation = new Reservation(1, movie, LocalDate.parse("2015-03-03"), 1735, seat, customer);
+    private Reservation reservation = new Reservation(1, movie, LocalDate.parse("2015-03-03"), 1735, "1A", customer);
 
     @Test
     public void getId() {
@@ -38,13 +38,13 @@ public class ReservationTest {
 
     @Test
     public void getSeat() {
-        assertEquals(true, seat.isAvailable());
+        assertEquals(true, seat.isBooked());
     }
 
     @Test
     public void setSeat() {
-        seat.setAvailability(false);
-        assertEquals(false, seat.isAvailable());
+        seat.setBooked(0);
+        assertEquals(0, seat.isBooked());
     }
 
     @Test

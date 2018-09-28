@@ -6,26 +6,37 @@ import static org.junit.Assert.*;
 
 public class SeatTest {
 
-    private Seat seat = new Seat(1, true, "1A");
+    private Seat seat = new Seat(1, "1A", 1, 1);
 
     @Test
-    public void getAvailability() {
-        assertEquals(true, seat.isAvailable());
+    public void getBooked() {
+        assertEquals(1, seat.isBooked());
     }
 
     @Test
     public void setAvailability() {
-        seat.setBooked(false);
-        assertEquals(false, seat.isAvailable());
+        seat.setBooked(0);
+        assertEquals(0, seat.isBooked());
     }
 
     @Test
-    public void getName() {
+    public void getRoom() {
+        assertEquals(1, seat.getRoom());
+    }
+
+    @Test
+    public void setRoom() {
+        seat.setRoom(2);
+        assertEquals(2, seat.getRoom());
+    }
+
+    @Test
+    public void getSpace() {
         assertEquals("1A", seat.getSpace());
     }
 
     @Test
-    public void setName() {
+    public void setSpace() {
         seat.setSpace("2A");
         assertEquals("2A", seat.getSpace());
     }
