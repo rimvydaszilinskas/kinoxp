@@ -24,11 +24,11 @@ CREATE TABLE movies(
 DROP TABLE IF EXISTS reservations;
 CREATE TABLE reservations(
 	id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    reservation_id INT(5) NOT NULL,
+    movie_id INT(5) NOT NULL,
     seat_number INT(5) NOT NULL,
     date DATE NOT NULL, 
     time varchar(5),
     customer_id INT(5) NOT NULL,
-    FOREIGN KEY reservations1(reservation_id) REFERENCES movies(id),
+    FOREIGN KEY reservations1(movie_id) REFERENCES movies(id),
     FOREIGN KEY reservations2(customer_id) REFERENCES customers(id)
 );

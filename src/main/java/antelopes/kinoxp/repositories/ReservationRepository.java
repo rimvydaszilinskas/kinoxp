@@ -19,7 +19,10 @@ public class ReservationRepository extends Repository<Reservation> {
             resultSet = preparedStatement.executeQuery();
 
             if(resultSet.next()){
-                return new Reservation()
+                return new Reservation(
+                        resultSet.getInt("id"),
+                        resultSet.get
+                );
             }
         }catch (SQLException ex){
             System.out.println(ex.getSQLState());
