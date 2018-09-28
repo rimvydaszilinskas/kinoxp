@@ -1,9 +1,11 @@
 package antelopes.kinoxp.repositories;
 
+import antelopes.kinoxp.models.Customer;
 import antelopes.kinoxp.models.Movie;
 import antelopes.kinoxp.models.Reservation;
 
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ReservationRepository extends Repository<Reservation> {
@@ -16,18 +18,31 @@ public class ReservationRepository extends Repository<Reservation> {
         try{
             preparedStatement = connection.prepareStatement("SELECT reservations.id, reservations.seat_number, reservations_date, reservations_time, " +
                     "movies.id, movies.name, movies.genre, movies.age_limit, customers.id, " +
-                    "customers.name FROM reservations " +
-                    "INNER JOIN movies ON reservation.movie_id=movies.id " +
-                    "INNER JOIN customers ON reservation.customer_id=customers.id WHERE reservations.id=?");
+                    "customers.name, seats.id, seats.space FROM reservations " +
+                    "INNER JOIN movies ON reservations.movie_id=movies.id " +
+                    "INNER JOIN customers ON reservations.customer_id=customers.id " +
+                    "INNER JOIN seats ON reservations.seat_id=seats.id WHERE reservations.id=?");
             preparedStatement.setInt(1, id);
 
             resultSet = preparedStatement.executeQuery();
 
             if(resultSet.next()){
-                Movie movie = new Movie(resultSet.getInt(""))
+                Movie movie = new Movie(
+                        resultSet.getInt("movies.id"),
+                        resultSet.getString("movies.name"),
+                        resultSet.getString("movies.genre"),
+                        resultSet.getInt("movies.age_limit"));
+                Customer customer = new Customer(
+                        resultSet.getInt("customers.id"),
+                        resultSet.getString("customers.name")
+                );
                 return new Reservation(
-                        resultSet.getInt("id"),
-                        resultSet.get
+                        resultSet.getInt("reservations.id"),
+                        movie,
+                        resultSet.getString("reservations.date"),
+                        resultSet.getInt("reservations.time"),
+                        resultSet.getString("seats.space"),
+                        customer
                 );
             }
         }catch (SQLException ex){
@@ -38,16 +53,78 @@ public class ReservationRepository extends Repository<Reservation> {
 
     @Override
     public List<Reservation> getAll() {
-        return null;
+        List<Reservation> reservations = new LinkedList<>();
+        try{
+            preparedStatement = connection.prepareStatement("SELECT reservations.id, reservations.seat_number, reservations_date, reservations_time, " +
+                    "movies.id, movies.name, movies.genre, movies.age_limit, customers.id, " +
+                    "customers.name, seats.id, seats.space FROM reservations " +
+                    "INNER JOIN movies ON reservations.movie_id=movies.id " +
+                    "INNER JOIN customers ON reservations.customer_id=customers.id " +
+                    "INNER JOIN seats ON reservations.seat_id=seats.id");
+
+            resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                Movie movie = new Movie(
+                        resultSet.getInt("movies.id"),
+                        resultSet.getString("movies.name"),
+                        resultSet.getString("movies.genre"),
+                        resultSet.getInt("movies.age_limit"));
+                Customer customer = new Customer(
+                        resultSet.getInt("customers.id"),
+                        resultSet.getString("customers.name")
+                );
+                reservations.add(new Reservation(
+                            resultSet.getInt("reservations.id"),
+                            movie,
+                            resultSet.getString("reservations.date"),
+                            resultSet.getInt("reservations.time"),
+                            resultSet.getString("seats.space"),
+                            customer
+                    ));
+            }
+        } catch (SQLException ex){
+            System.out.println(ex.getSQLState());
+        }
+        return reservations;
     }
 
     @Override
     public boolean delete(int id) {
+        try{
+            Reservation reservation = this.get(id);
+            preparedStatement = connection.prepareStatement("UPDATE seats SET booked=0 WHERE space=?");
+            preparedStatement.setString(1, reservation.getSeatNumber());
+
+            if(preparedStatement.execute()){
+                preparedStatement = connection.prepareStatement("DELETE FROM reservations WHERE id=?");
+                preparedStatement.setInt(1, id);
+
+                if(preparedStatement.execute())
+                    return true;
+            }
+        }catch (SQLException ex){
+            System.out.println(ex.getSQLState());
+        }
         return false;
     }
 
     @Override
     public boolean update(Reservation object) {
+        try{
+            preparedStatement = connection.prepareStatement("UPDATE reservations SET movie_id=?, seat_number=?, date=?, time=? WHERE id=?");
+            preparedStatement.setInt(1, object.getMovie().getId());
+            preparedStatement.setString(2, object.getSeatNumber());
+            preparedStatement.setString(3, object.getDate().toString());
+            preparedStatement.setInt(4, object.getTime());
+            preparedStatement.setInt(5, object.getId());
+
+            if(preparedStatement.executeUpdate() > 0){
+
+            }
+        }catch (SQLException ex){
+            System.out.println(ex.getSQLState());
+        }
         return false;
     }
 
