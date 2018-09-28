@@ -15,19 +15,19 @@ public class SeatTest {
 
     @Test
     public void setAvailability() {
-        seat.setAvailability(false);
+        seat.setBooked(false);
         assertEquals(false, seat.isAvailable());
     }
 
     @Test
     public void getName() {
-        assertEquals("1A", seat.getName());
+        assertEquals("1A", seat.getSpace());
     }
 
     @Test
     public void setName() {
-        seat.setName("2A");
-        assertEquals("2A", seat.getName());
+        seat.setSpace("2A");
+        assertEquals("2A", seat.getSpace());
     }
 
     @Test

@@ -3,13 +3,15 @@ package antelopes.kinoxp.models;
 public class Seat {
 
     private int id;
-    private boolean availability;
-    private String name; // 1A, 1B
+    private String space; // 1A, 1B
+    private int room; // 1 or 2
+    private int booked; // 0 or 1
 
-    public Seat(int id, boolean availability, String name) {
+    public Seat(int id, String space, int room, int booked) {
         this.id = id;
-        this.availability = availability;
-        this.name = name;
+        this.space = space;
+        this.room = room;
+        this.booked = booked;
     }
 
     public int getId() {
@@ -20,20 +22,30 @@ public class Seat {
         this.id = id;
     }
 
-    public boolean isAvailable() {
-        return availability;
+    public String getSpace() {
+        return space;
     }
 
-    public void setAvailability(boolean availability) {
-        this.availability = availability;
+    public void setSpace(String space) {
+        this.space = space;
     }
 
-    public String getName() {
-        return name;
+    public int getRoom() {
+        return room;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRoom(int room) {
+        this.room = room;
     }
+
+    public int isBooked() {
+        return booked;
+    }
+
+    public void setBooked(int booked) {
+        this.booked = booked;
+    }
+
+
 }
 
