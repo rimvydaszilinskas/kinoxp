@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Available movies</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+<nav>
+    <ul>
+        <li class="logo">Kino Cinema</li>
+        <li class="back">Logout</li>
+    </ul>
+</nav>
+<div class="container">
+    <h1> Movies being displayed in the cinema</h1>
 
+    <a class="button" href="addAMovie.html">Add new movie </a>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Age limit</th>
+            <th></th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td> The nun</td>
+            <td> Horrror</td>
+            <td> 18 </td>
+            <td><a class="button" href="updateMovieList.html">Update </a><a class="button" href=" ">Delete </a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
