@@ -9,14 +9,11 @@ import antelopes.kinoxp.repositories.Repository;
 import antelopes.kinoxp.repositories.ReservationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-<<<<<<< HEAD
 
-=======
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
->>>>>>> 80b152f258f93b96078ae482edf5ce4d06132c7f
 public class MainController {
     private Repository<Customer> customerRepository;
     private Repository<Movie> movieRepository;
@@ -30,10 +27,7 @@ public class MainController {
 
     @GetMapping("/")
     public String index(){
-<<<<<<< HEAD
-        return "index";
-=======
-        return "index.html"; }
+        return "index"; }
 
     @GetMapping("/employees/login.html")
     public String login() {
@@ -51,6 +45,5 @@ public class MainController {
     @GetMapping("/employees/employees.html")
     public String employees(){
         return "employees/employees";
->>>>>>> 80b152f258f93b96078ae482edf5ce4d06132c7f
     }
 }

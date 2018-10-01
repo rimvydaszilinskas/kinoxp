@@ -1,9 +1,25 @@
-/*navbar style */
-
 body{
     margin:0;
     font-family: Montserrat, sans-serif;
+    color: white;
+    background-color: black;
+    opacity: 80;
 }
+
+/* index page*/
+.header{
+    margin-top: 10%;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.index{
+    margin-left: 42%;
+
+}
+
+/*navbar style */
 ul {
     list-style-type: none;
     margin:0;
@@ -28,6 +44,7 @@ li a {
 li a:hover {
     background-color: #111;
 }
+
 .logo{
     margin-left:100px;
     display: block;
@@ -41,15 +58,16 @@ li a:hover {
     float:right;
 }
 
-/*table style*/
 
+/* table style */
 .container {
     max-width: 70vw;
     margin: 0 15vw;
 }
 h1{
-    margin-bottom:30px;
+    margin-bottom:40px;
 }
+
 table{
     border-collapse: collapse;
     width:100%;
@@ -57,11 +75,11 @@ table{
 }
 
 th{
-    background-color: peachpuff;
+    background-color: royalblue;
 }
 td,th{
     font-size: 12px;
-    border: 1px solid #dddddd;
+    border: 1px solid dimgrey;
     text-align:center;
     padding: 9px 10px 9px 10px;
 }
@@ -70,7 +88,6 @@ tr:nth-child(even){
 }
 
 .button {
-    font-family: Montserrat, sans-serif;
     background-color: lightgreen;
     color: black;
     font-size: 16px;
@@ -84,6 +101,7 @@ tr:nth-child(even){
 .button:hover {
     background-color: black;
     color:white;
+    font-size: 18px;
 }
 
 a{
