@@ -1,4 +1,3 @@
-/*
 package antelopes.kinoxp.controllers;
 
 import antelopes.kinoxp.models.Customer;
@@ -9,42 +8,40 @@ import antelopes.kinoxp.repositories.MovieRepository;
 import antelopes.kinoxp.repositories.Repository;
 import antelopes.kinoxp.repositories.ReservationRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class MainController {
+public class CustomerController{
+
     private Repository<Customer> customerRepository;
     private Repository<Movie> movieRepository;
     private Repository<Reservation> reservationRepository;
 
-    public MainController(){
+    public CustomerController(){
         customerRepository = new CustomerRepository();
         movieRepository = new MovieRepository();
         reservationRepository= new ReservationRepository();
     }
-
     @GetMapping("/")
-    public String index(){
-        return "index"; }
-
-    @GetMapping("/employees/login.html")
-    public String login() {
-        return "employees/login";
-    }
+    public String home(){return "index";}
 
     @GetMapping("/customers/movieList.html")
-    public String movieList(){return "customers/movieList";}
+    public String movieList(Model model){
 
-    @GetMapping("/customers/booking.html")
-    public String booking(){
-        return "customers/booking";
+        model.addAttribute("movies", movieRepository.getAll());
+        return "customers/movieList";
     }
 
-    @GetMapping("/employees/employees.html")
-    public String employees(){
-        return "employees/employees";
+    @GetMapping("/booking")
+    public String booking(@RequestParam("id") int movieId,@ModelAttribute Customer customer, @ModelAttribute Reservation reservation)
+    {
+
+        movieRepository.get(movieId);
+        customerRepository.create(customer);
+        reservationRepository.create(reservation);
+        return "booking";
     }
-}*/
+}

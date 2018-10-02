@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href="/stylesheet.css">
     <title>Available movies</title>
@@ -8,7 +8,7 @@
 <nav>
     <ul>
         <li class="logo">Kino Cinema</li>
-        <li class="back"><a href="/">Back</a></li>
+        <li class="back"><a href="index.html">Back</a></li>
     </ul>
 </nav>
 <div class="container">
@@ -25,10 +25,10 @@
         </thead>
 
         <tbody>
-        <tr>
-            <td> The nun</td>
-            <td> Horrror</td>
-            <td> 18 </td>
+        <tr th:each="movie : ${movies}">
+            <td th:text="${movie.name}"> </td>
+            <td th:text="${movie.genre}"> </td>
+            <td th:text="${movie.ageLimit}"> </td>
             <td><a class="button" href="booking.html">Book</a></td>
         </tr>
         </tbody>

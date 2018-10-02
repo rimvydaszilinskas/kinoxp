@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MovieRepository extends Repository<Movie> {
@@ -36,7 +37,7 @@ public class MovieRepository extends Repository<Movie> {
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getString("genre"),
-                    resultSet.getInt("age limit")
+                    resultSet.getInt("ageLimit")
             );
 
 
@@ -49,8 +50,9 @@ public class MovieRepository extends Repository<Movie> {
 
     @Override
     public List<Movie> getAll()  {
-        ArrayList<Movie> movies = new ArrayList<>();
 
+
+        List<Movie> movies = new LinkedList<>();
         try {
             preparedStatement = connection.prepareStatement("SELECT * FROM  movies ");
             resultSet = preparedStatement.executeQuery();
@@ -59,7 +61,7 @@ public class MovieRepository extends Repository<Movie> {
                 movies.add(new Movie(resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("genre"),
-                        resultSet.getInt("age limit")));
+                        resultSet.getInt("ageLimit")));
 
 
             }
@@ -103,7 +105,7 @@ public class MovieRepository extends Repository<Movie> {
     public boolean update(Movie object) {
 
         try {
-            preparedStatement = connection.prepareStatement("UPDATE movies SET name= ? , genre = ? , age_limit= ? WHERE id= ? ");
+            preparedStatement = connection.prepareStatement("UPDATE movies SET name= ? , genre = ? , ageLimit= ? WHERE id= ? ");
             preparedStatement.setString(1,object.getName());
             preparedStatement.setString(2,object.getGenre());
             preparedStatement.setInt(3,object.getAgeLimit());
@@ -124,7 +126,7 @@ public class MovieRepository extends Repository<Movie> {
     public boolean create(Movie object) {
 
         try {
-            preparedStatement = connection.prepareStatement("INSERT INTO movies(id,name,genre,age_limit) VALUES(?,?,?,?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO movies(id,name,genre,ageLimit) VALUES(?,?,?,?)");
             preparedStatement.setInt(1,object.getId());
             preparedStatement.setString(2,object.getName());
             preparedStatement.setString(3,object.getGenre());
