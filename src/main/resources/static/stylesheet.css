@@ -91,7 +91,7 @@ td,th{
     padding: 9px 10px 9px 10px;
 }
 tr:nth-child(even){
-    background-color: #f2f2f2;
+    background-color: darkslategrey;
 }
 
 .button {
@@ -107,6 +107,11 @@ tr:nth-child(even){
 
 .button-login{
     margin-top: 10%;
+}
+
+.button-delete{
+    color: darkred;
+    margin-left: 20px;
 }
 .button:hover {
     background-color: black;
