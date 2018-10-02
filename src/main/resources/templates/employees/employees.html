@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Available movies</title>
     <link rel="stylesheet" href="/stylesheet.css">
@@ -14,9 +14,10 @@
 </nav>
 <div class="container">
     <h1> Movies being displayed in the cinema</h1>
-    <p><a class="button" href="/customers/snacks">See snacks</a></p>
 
+    <a class="button" href="/employees/snacksList">Update snacks</a>
     <a class="button" href="/movies/add">Add new movie </a>
+
     <table>
         <thead>
         <tr>
@@ -29,11 +30,13 @@
         </thead>
 
         <tbody>
-        <tr>
-            <td> The nun</td>
-            <td> Horrror</td>
-            <td> 18 </td>
-            <td><a class="button" href="../movies/updateMovieList.html">Update </a><a class="button button-delete" href=" ">Delete </a></td>
+        <tr th:each="movie : ${movies}">
+            <td th:text="${movie.name}"> </td>
+            <td th:text="${movie.genre}"> </td>
+            <td th:text="${movie.ageLimit}"> </td>
+
+            <td><a class="button" href="../movies/updateMovieList.html">Update </a>
+                <a class="button button-delete" href=" ">Delete </a></td>
         </tr>
         </tbody>
     </table>

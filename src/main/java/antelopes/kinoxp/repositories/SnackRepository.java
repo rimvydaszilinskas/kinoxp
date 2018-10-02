@@ -88,7 +88,7 @@ public class SnackRepository extends Repository<Snack> {
 
     public boolean delete(Snack object) {
         try {
-            PreparedStatement preparedStatement = preparedStatement = connection.prepareStatement("DELETE FROM movies WHERE id= ?") ;
+            PreparedStatement preparedStatement = preparedStatement = connection.prepareStatement("DELETE FROM snacks WHERE id= ?") ;
             preparedStatement.setInt(1,object.getId());
             preparedStatement.execute();
         }catch (SQLException e){
@@ -105,7 +105,7 @@ public class SnackRepository extends Repository<Snack> {
     public boolean update(Snack object) {
 
         try {
-            preparedStatement = connection.prepareStatement("UPDATE snacks SET name= ? , age = ? WHERE id= ? ");
+            preparedStatement = connection.prepareStatement("UPDATE snacks SET name = ? , price = ? WHERE id= ? ");
             preparedStatement.setString(1,object.getName());
             preparedStatement.setInt(2,object.getPrice());
             preparedStatement.setInt(3,object.getId());
