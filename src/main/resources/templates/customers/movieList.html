@@ -30,7 +30,7 @@
             <td th:text="${movie.name}"> </td>
             <td th:text="${movie.genre}"> </td>
             <td th:text="${movie.ageLimit}"> </td>
-            <td><a class="button" th:href="'booking?id=' + ${movie.id}">Book</a></td>
+            <td><a th:href="@{'/booking?id=' + ${movie.id}}"  class="button">Book</a></td>
         </tr>
         </tbody>
     </table>

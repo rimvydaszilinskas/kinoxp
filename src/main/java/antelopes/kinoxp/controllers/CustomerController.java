@@ -36,7 +36,7 @@ public class CustomerController{
     public String booking(@RequestParam("id")int movieId, Model model)
     {
         model.addAttribute("movie", movieRepository.get(movieId));
-        return "booking";
+        return "customers/booking";
     }
 
     @PostMapping("/booking")
