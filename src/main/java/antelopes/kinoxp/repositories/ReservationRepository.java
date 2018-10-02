@@ -19,7 +19,7 @@ public class ReservationRepository extends Repository<Reservation> {
     public Reservation get(int id) {
         try{
             preparedStatement = connection.prepareStatement("SELECT reservations.id, reservations.seat_number, reservations_date, reservations_time, " +
-                    "movies.id, movies.name, movies.genre, movies.age_limit, customers.id, " +
+                    "movies.id, movies.name, movies.genre, movies.ageLimit, customers.id, " +
                     "customers.name, seats.id, seats.space FROM reservations " +
                     "INNER JOIN movies ON reservations.movie_id=movies.id " +
                     "INNER JOIN customers ON reservations.customer_id=customers.id " +
@@ -33,7 +33,7 @@ public class ReservationRepository extends Repository<Reservation> {
                         resultSet.getInt("movies.id"),
                         resultSet.getString("movies.name"),
                         resultSet.getString("movies.genre"),
-                        resultSet.getInt("movies.age_limit"));
+                        resultSet.getInt("movies.ageLimit"));
                 Customer customer = new Customer(
                         resultSet.getInt("customers.id"),
                         resultSet.getString("customers.name")
@@ -58,7 +58,7 @@ public class ReservationRepository extends Repository<Reservation> {
         List<Reservation> reservations = new LinkedList<>();
         try{
             preparedStatement = connection.prepareStatement("SELECT reservations.id, reservations.seat_number, reservations_date, reservations_time, " +
-                    "movies.id, movies.name, movies.genre, movies.age_limit, customers.id, " +
+                    "movies.id, movies.name, movies.genre, movies.ageLimit, customers.id, " +
                     "customers.name, seats.id, seats.space FROM reservations " +
                     "INNER JOIN movies ON reservations.movie_id=movies.id " +
                     "INNER JOIN customers ON reservations.customer_id=customers.id " +
@@ -71,7 +71,7 @@ public class ReservationRepository extends Repository<Reservation> {
                         resultSet.getInt("movies.id"),
                         resultSet.getString("movies.name"),
                         resultSet.getString("movies.genre"),
-                        resultSet.getInt("movies.age_limit"));
+                        resultSet.getInt("movies.ageLimit"));
                 Customer customer = new Customer(
                         resultSet.getInt("customers.id"),
                         resultSet.getString("customers.name")

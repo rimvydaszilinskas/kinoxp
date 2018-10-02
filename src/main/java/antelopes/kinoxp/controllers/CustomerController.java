@@ -33,7 +33,7 @@ public class CustomerController{
     }
 
     @GetMapping("/booking")
-    public String booking(@RequestParam("id")int movieId,@ModelAttribute Movie movie, Model model)
+    public String booking(@RequestParam("id")int movieId, Model model)
     {
         model.addAttribute("movie", movieRepository.get(movieId));
         return "booking";
