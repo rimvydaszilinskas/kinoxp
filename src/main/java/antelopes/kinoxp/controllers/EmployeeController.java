@@ -17,29 +17,6 @@ public class EmployeeController {
         return "employees/login";
     }
 
-    @GetMapping(URL_PATH + "/register")
-    public String register(){
-        // TODO make a register page for employees
-        return null;
-    }
-
-    @PostMapping(URL_PATH + "/register")
-    public String register(@RequestParam("name")String name, @RequestParam("username")String username, @RequestParam("password")String password){
-        try{
-            String hashedPasword = PasswordHash.generatePassword(password);
-            Employee employee = new Employee(username, hashedPasword, name);
-            if(!employeeRepository.create(employee)){
-                // TODO create a redirect back to register page
-                return null;
-            }
-        } catch (Exception ex){
-            ex.printStackTrace();
-            // TODO create an error page
-        }
-
-        return "employees/employees";
-    }
-
     @PostMapping(URL_PATH + "/login")
     public String login(@RequestParam("password")String password){
         Employee employee = employeeRepository.get("kinoxp");

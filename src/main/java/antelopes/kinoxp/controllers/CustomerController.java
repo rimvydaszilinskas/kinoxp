@@ -3,10 +3,8 @@ package antelopes.kinoxp.controllers;
 import antelopes.kinoxp.models.Customer;
 import antelopes.kinoxp.models.Movie;
 import antelopes.kinoxp.models.Reservation;
-import antelopes.kinoxp.repositories.CustomerRepository;
-import antelopes.kinoxp.repositories.MovieRepository;
-import antelopes.kinoxp.repositories.Repository;
-import antelopes.kinoxp.repositories.ReservationRepository;
+import antelopes.kinoxp.models.Snack;
+import antelopes.kinoxp.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +17,13 @@ public class CustomerController{
     private Repository<Customer> customerRepository;
     private Repository<Movie> movieRepository;
     private Repository<Reservation> reservationRepository;
+    private Repository<Snack> snackRepository;
 
     public CustomerController(){
         customerRepository = new CustomerRepository();
         movieRepository = new MovieRepository();
         reservationRepository= new ReservationRepository();
+        snackRepository = new SnackRepository();
     }
 
     @GetMapping("/customers/movieList")
@@ -41,5 +41,11 @@ public class CustomerController{
         customerRepository.create(customer);
         reservationRepository.create(reservation);
         return "booking";
+    }
+
+    @GetMapping("/customers/snacks")
+    public String snacks(Model model){
+        model.addAttribute("snacks", snackRepository.getAll());
+        return "customers/snacks";
     }
 }

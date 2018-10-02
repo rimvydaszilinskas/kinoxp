@@ -106,11 +106,11 @@ tr:nth-child(even){
 }
 
 .button-login{
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .button-delete{
-    color: darkred;
+    background-color: darkred;
     margin-left: 20px;
 }
 .button:hover {
