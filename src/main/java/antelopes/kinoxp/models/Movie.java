@@ -17,6 +17,13 @@ public class Movie {
         this.seats = new LinkedList<>();
     }
 
+    public Movie(String movieName, String genre, int ageLimit, List<Seat> seats) {
+        this.movieName = movieName;
+        this.genre = genre;
+        this.ageLimit = ageLimit;
+        this.seats = seats;
+    }
+
     public String getName() {
         return movieName;
     }
