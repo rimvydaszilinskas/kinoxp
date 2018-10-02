@@ -27,14 +27,14 @@ public class CustomerController{
     }
 
     @GetMapping("/customers/movieList.html")
-    public String movieList(Model model){
+    public String movieList(Model model) {
 
         model.addAttribute("movies", movieRepository.getAll());
         return "customers/movieList";
     }
 
     @GetMapping("/booking")
-    public String booking(@RequestParam("id") int movieId,@ModelAttribute Customer customer, @ModelAttribute Reservation reservation)
+    public String booking(@RequestParam("id")int movieId,@ModelAttribute Customer customer, @ModelAttribute Reservation reservation)
     {
 
         movieRepository.get(movieId);

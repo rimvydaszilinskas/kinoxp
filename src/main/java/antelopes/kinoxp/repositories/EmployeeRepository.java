@@ -36,6 +36,7 @@ public class EmployeeRepository extends Repository<Employee> {
         try{
             preparedStatement = connection.prepareStatement("SELECT * FROM employees WHERE username=?");
 
+            preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 
             if(resultSet.next()){

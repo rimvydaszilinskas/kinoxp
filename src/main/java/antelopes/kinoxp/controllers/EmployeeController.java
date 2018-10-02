@@ -43,6 +43,7 @@ public class EmployeeController {
     @PostMapping(URL_PATH + "/login")
     public String login(@RequestParam("password")String password){
         Employee employee = employeeRepository.get("kinoxp");
+        System.out.println(employee.getPassword());
         try{
             if(employee != null){
                 if(PasswordHash.validatePassword(password, employee.getPassword())){
@@ -54,7 +55,7 @@ public class EmployeeController {
             ex.printStackTrace();
         }
         // TODO create a link to the other page
-        return null;
+        return "employees/employees";
     }
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, path = URL_PATH + "/logout")
