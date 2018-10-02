@@ -28,7 +28,7 @@ public class MovieRepository extends Repository<Movie> {
     @Override
     public Movie get(int id) {
         try {
-            preparedStatement = connection.prepareStatement("SELECT  * FROM  movies WHERE  id= ?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM  movies WHERE  id= ?");
             preparedStatement.setInt(1,id);
             resultSet = preparedStatement.executeQuery();
             resultSet.next();

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
+
 @Controller
 public class MovieController {
     private final static String URL_PATH = "/movies";
@@ -23,10 +25,13 @@ public class MovieController {
     }
 
     @PostMapping(URL_PATH + "/add")
-    public String addMovie(Model model, @ModelAttribute Movie movie){
-        model.addAttribute("added", movieRepository.create(movie));
-        model.addAttribute("movies", movieRepository.getAll());
-        return "movies/updateMovieList";
+    public String addMovie(@RequestParam("title")String title,
+                           @RequestParam("genre")String genre,
+                           @RequestParam("ageLimit")String ageLimit){
+        int age = Integer.parseInt(ageLimit);
+        Movie movie = new Movie(title, genre, age, new LinkedList<>());
+        movieRepository.create(movie);
+        return "employees/employees";
     }
 
     @PostMapping(URL_PATH + "/delete")
