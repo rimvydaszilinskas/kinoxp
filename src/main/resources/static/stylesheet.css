@@ -107,6 +107,7 @@ tr:nth-child(even){
 
 .button-login{
     margin-top: 5%;
+    border: none;
 }
 
 .button-delete{
