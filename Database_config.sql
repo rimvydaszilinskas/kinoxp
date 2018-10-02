@@ -17,8 +17,7 @@ CREATE TABLE movies(
   id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(45) NOT NULL,
   genre VARCHAR(40) NOT NULL,
-  age_limit INT(2) NOT NULL,
-  FOREIGN KEY movies(genre) REFERENCES genres(id)
+  age_limit INT(2) NOT NULL
 );
 
 DROP TABLE IF EXISTS seats;
