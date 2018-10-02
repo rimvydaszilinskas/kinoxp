@@ -48,14 +48,14 @@ public class EmployeeController {
             if(employee != null){
                 if(PasswordHash.validatePassword(password, employee.getPassword())){
                     ActiveUser.login(employee);
-                    return "index";
+                    return "employees/employees";
                 }
             }
         } catch (Exception ex){
             ex.printStackTrace();
         }
         // TODO create a link to the other page
-        return "employees/employees";
+        return "employees/login";
     }
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, path = URL_PATH + "/logout")
