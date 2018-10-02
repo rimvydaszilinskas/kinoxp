@@ -26,7 +26,7 @@ public class CustomerController{
         reservationRepository= new ReservationRepository();
     }
 
-    @GetMapping("/customers/movieList.html")
+    @GetMapping("/customers/movieList")
     public String movieList(Model model) {
 
         model.addAttribute("movies", movieRepository.getAll());
