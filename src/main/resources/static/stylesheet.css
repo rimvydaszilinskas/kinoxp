@@ -64,7 +64,13 @@ li a:hover {
 .container {
     max-width: 70vw;
     margin: 0 15vw;
+
 }
+
+.container-login{
+    margin-top: 10%;
+}
+
 h1{
     margin-bottom:40px;
 }
@@ -99,6 +105,9 @@ tr:nth-child(even){
     text-decoration: none;
 }
 
+.button-login{
+    margin-top: 10%;
+}
 .button:hover {
     background-color: black;
     color:white;
