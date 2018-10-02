@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="/stylesheet.css">
+    <title>Snacks</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Kino Cinema</li>
+        <li class="back"><a href="/customers/movieList">Back</a></li>
+    </ul>
+</nav>
+<div class="container">
+<table>
+
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+
+    </tr>
+    </thead>
+    <tbody>
+<tr th:each="snack : ${snacks}">
+    <td th:text="${snack.name}"> </td>
+    <td th:text="${snack.price}"> </td>
+    </tbody>
+
+</tr>
+</table>
+</div>
+</body>
+</html>
