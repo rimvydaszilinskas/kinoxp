@@ -46,6 +46,13 @@ public class CustomerController{
 
     }
 
+    @GetMapping("/details")
+    public String details(@RequestParam("id") int movieId, Model model){
+        model.addAttribute("movie", movieRepository.get(movieId));
+        return"customers/movieDetails";
+
+    }
+
     @GetMapping("/customers/snacks")
     public String snacks(Model model){
         model.addAttribute("snacks", snackRepository.getAll());
