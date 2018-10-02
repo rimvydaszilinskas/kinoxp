@@ -9,18 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CustomerController{
 
-    private Repository<Customer> customerRepository;
     private Repository<Movie> movieRepository;
     private Repository<Reservation> reservationRepository;
     private Repository<Snack> snackRepository;
 
     public CustomerController(){
-        customerRepository = new CustomerRepository();
         movieRepository = new MovieRepository();
         reservationRepository= new ReservationRepository();
         snackRepository = new SnackRepository();
@@ -34,13 +33,17 @@ public class CustomerController{
     }
 
     @GetMapping("/booking")
-    public String booking(@RequestParam("id")int movieId,@ModelAttribute Customer customer, @ModelAttribute Reservation reservation)
+    public String booking(@RequestParam("id")int movieId,@ModelAttribute Movie movie, Model model)
     {
-
-        movieRepository.get(movieId);
-        customerRepository.create(customer);
-        reservationRepository.create(reservation);
+        model.addAttribute("movie", movieRepository.get(movieId));
         return "booking";
+    }
+
+    @PostMapping("/booking")
+    public String booking(@ModelAttribute Reservation reservation){
+        reservationRepository.create(reservation);
+        return "redirect:/customers/movieList";
+
     }
 
     @GetMapping("/customers/snacks")

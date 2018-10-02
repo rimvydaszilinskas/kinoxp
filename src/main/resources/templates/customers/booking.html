@@ -1,5 +1,5 @@
-    <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Booking Customers Page</title>
     <link rel="stylesheet" href="/stylesheet.css">
@@ -9,22 +9,14 @@
 
 <h2>BOOKING DETAILS</h2>
 
-<!---TO DO: add thymleaf -->
-
 <p>
-    <span>Movie Name:</span>
-    <span>Avatar</span>
+    <input type="hidden" th:value="${movie.id}" name="id"/>
+    <span>Movie Name:<input type="text" th:value="${movie.name}" name="name"/></span>
 </p>
-
-<p>
-    <span>Screening Time:</span>
-    <span>2 hrs and 12 mins</span>
-</p>
-
 
 <h2>CUSTOMER DETAILS</h2>
 
-<form action="">
+<form action="booking" method="post">
 
     <p>First Name:  <input type="text"   /> </p>
 
