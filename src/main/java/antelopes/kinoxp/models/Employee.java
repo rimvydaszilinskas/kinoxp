@@ -3,7 +3,7 @@ package antelopes.kinoxp.models;
 public class Employee {
     private int id;
     private String username;
-    private String password;
+    private String password; // Store the hashed password right here
     private String name;
 
     public Employee(int id, String username, String password, String name) {

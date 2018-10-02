@@ -5,9 +5,7 @@ import antelopes.kinoxp.repositories.EmployeeRepository;
 import antelopes.kinoxp.utilities.ActiveUser;
 import antelopes.kinoxp.utilities.PasswordHash;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class EmployeeController {
@@ -43,12 +41,13 @@ public class EmployeeController {
     }
 
     @PostMapping(URL_PATH + "/login")
-    public String login(@RequestParam("username")String username, @RequestParam("password")String password){
-        Employee employee = employeeRepository.get(username);
+    public String login(@RequestParam("password")String password){
+        Employee employee = employeeRepository.get("kinoxp");
         try{
             if(employee != null){
                 if(PasswordHash.validatePassword(password, employee.getPassword())){
                     ActiveUser.login(employee);
+                    return "index";
                 }
             }
         } catch (Exception ex){
@@ -56,5 +55,11 @@ public class EmployeeController {
         }
         // TODO create a link to the other page
         return null;
+    }
+
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, path = URL_PATH + "/logout")
+    public String logout(){
+        ActiveUser.logout();
+        return "index";
     }
 }

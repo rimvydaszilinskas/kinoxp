@@ -46,6 +46,8 @@ DROP TABLE IF EXISTS employees;
 CREATE TABLE employees(
   id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(45) NOT NULL,
-  username VARCHAR(45) NOT NULL,
-  password VARCHAR(255) NOT NULL UNIQUE
+  username VARCHAR(45) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
 );
+
+INSERT INTO employees(name, username, password) VALUES ("Main Employee", "kinoxp", "1000:5053073df23f25a73a255732cb33ee47:ad3a2f9c21ae0674281e0e7d6ebdace4ead7e484f0aef8170dda1c2a7df39dec63b362b69f27b18175dfdebfdfe52eb080437c236398fcab006d83360abfdfaf");
