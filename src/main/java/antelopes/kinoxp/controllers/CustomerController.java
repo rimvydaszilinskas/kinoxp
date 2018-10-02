@@ -40,7 +40,7 @@ public class CustomerController{
     }
 
     @PostMapping("/booking")
-    public String booking(@ModelAttribute Reservation reservation){
+    public String booking(@ModelAttribute Reservation reservation, @ModelAttribute Customer customer){
         reservationRepository.create(reservation);
         return "redirect:/customers/movieList";
 
