@@ -43,7 +43,6 @@ public class EmployeeController {
     @PostMapping(URL_PATH + "/login")
     public String login(@RequestParam("password")String password){
         Employee employee = employeeRepository.get("kinoxp");
-        System.out.println(employee.getPassword());
         try{
             if(employee != null){
                 if(PasswordHash.validatePassword(password, employee.getPassword())){
