@@ -25,8 +25,6 @@ public class CustomerController{
         movieRepository = new MovieRepository();
         reservationRepository= new ReservationRepository();
     }
-    @GetMapping("/")
-    public String home(){return "index";}
 
     @GetMapping("/customers/movieList.html")
     public String movieList(Model model){
