@@ -104,6 +104,13 @@ public class EmployeeController {
         int p = Integer.parseInt(price);
         Snack snack = new Snack(name, p);
         snackRepository.create(snack);
-        return "redirect:/employees/snacksList";
+        return "redirect:/employees/sna1cksList";
     }
+
+    @GetMapping("/employees/employeeSchedule")
+    public String employeeSchedule(){
+
+        return "employees/employeeSchedule";
+    }
+
 }
