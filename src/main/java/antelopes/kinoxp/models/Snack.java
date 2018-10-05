@@ -9,6 +9,10 @@ public class Snack {
         this.name=name;
         this.price=price;
     }
+    public Snack(String name, int price){
+        this.name=name;
+        this.price=price;
+    }
 
     public String getName() {
         return name;
@@ -33,4 +37,6 @@ public class Snack {
     public void setId(int id) {
         this.id = id;
     }
+
+
 }

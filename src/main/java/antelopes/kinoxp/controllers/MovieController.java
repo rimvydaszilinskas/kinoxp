@@ -13,7 +13,7 @@ public class MovieController {
     private final static String URL_PATH = "/movies";
     private MovieRepository movieRepository = new MovieRepository();
 
-    @GetMapping(URL_PATH)
+    @GetMapping(URL_PATH + "/updateMovieList")
     public String displayMovies(Model model){
         model.addAttribute(movieRepository.getAll());
         return "movies/updateMovieList";

@@ -11,37 +11,29 @@
 
 <p>
     <input type="hidden" th:value="${movie.id}" name="id"/>
-    <span>Movie Name:<input type="text" th:value="${movie.name}" name="name"/></span>
+    <p th:text="'Movie name: ' + ${movie.name} "></p>
 </p>
 
 <h2>CUSTOMER DETAILS</h2>
 
 <form action="booking" method="post">
 
-    <p>First Name:  <input type="text"   /> </p>
+    <p>Name:  <input type="text" name="customerName" /> </p>
 
-    <p>Last Name:  <input type="text"/></p>
+    <p>Date: <input type="date" name="date"/> </p>
 
-    <p>Age: <input type="text"/></p>
-
-    <p>Date: <input type="date"/> </p>
-
-    <p>Movie time: </p>
-    <select id="screeningTime" space="country">
-        <option value="time1">16:00</option>
-        <option value="time2">18:00</option>
-        <option value="time3">20:00</option>
+    <p>Movie time:
+    <select th:each=" reservation :${reservations}">
+        <option></option>
     </select>
+    </p>
 
-    <p>Seat: <input type="text" /></p>
+    <p>Seat:
+        <select th:field="${seats.id}">
+            <option th:each="seat : ${seats}" th:value="${seat.id}" th:text="${seat.space}" ></option>
+        </select>
+    </p>
 
-    <select id="country" space="seats">
-        <option value="rowA">1A</option>
-        <option value="rowB">1B</option>
-        <option value="rowC">1C</option>
-        <option value="rowD">1D</option>
-        <option value="rowE">1E</option>
-    </select>
     <p>
         <input type="submit" value="Book" class="btn btn-create"/>
     </p>

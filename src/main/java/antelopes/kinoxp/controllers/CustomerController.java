@@ -1,9 +1,6 @@
 package antelopes.kinoxp.controllers;
 
-import antelopes.kinoxp.models.Customer;
-import antelopes.kinoxp.models.Movie;
-import antelopes.kinoxp.models.Reservation;
-import antelopes.kinoxp.models.Snack;
+import antelopes.kinoxp.models.*;
 import antelopes.kinoxp.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,13 +33,22 @@ public class CustomerController{
     public String booking(@RequestParam("id")int movieId, Model model)
     {
         model.addAttribute("movie", movieRepository.get(movieId));
-        return "booking";
+        return "customers/booking";
     }
 
     @PostMapping("/booking")
-    public String booking(@ModelAttribute Reservation reservation){
+    public String booking(@ModelAttribute Reservation reservation, @ModelAttribute Customer customer, @ModelAttribute Seat seat, Model model){
+        model.addAttribute("seat", seat);
+
         reservationRepository.create(reservation);
         return "redirect:/customers/movieList";
+
+    }
+
+    @GetMapping("/details")
+    public String details(@RequestParam("id") int movieId, Model model){
+        model.addAttribute("movie", movieRepository.get(movieId));
+        return"customers/movieDetails";
 
     }
 

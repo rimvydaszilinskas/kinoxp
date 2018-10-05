@@ -89,18 +89,6 @@ public class MovieRepository extends Repository<Movie> {
         return false;
     }
 
-    public boolean delete(Movie object) {
-        try {
-            PreparedStatement preparedStatement = preparedStatement = connection.prepareStatement("DELETE FROM movies WHERE id= ?") ;
-            preparedStatement.setInt(1,object.getId());
-            preparedStatement.execute();
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-
     @Override
     public boolean update(Movie object) {
 
