@@ -30,7 +30,7 @@ public class EmployeeController {
             if(employee != null){
                 if(PasswordHash.validatePassword(password, employee.getPassword())){
                     ActiveUser.login(employee);
-                    return "employees/employees";
+                    return "redirect: /employees/employees";
                 }
             }
         } catch (Exception ex){
@@ -45,8 +45,6 @@ public class EmployeeController {
         ActiveUser.logout();
         return "index";
     }
-
-
 
     @GetMapping("/employees/snacksList")
     public String snacksList(Model model){
@@ -68,9 +66,6 @@ public class EmployeeController {
         snackRepository.update(snack);
         return "redirect:/employees/snacksList";
     }
-
-
-
 
     @GetMapping("/employees/deleteSnacks")
     public String deleteSnacks(@RequestParam("id") int snackId, Model model )
