@@ -47,18 +47,23 @@ li a:hover {
 .logo{
     margin-left:50px;
     display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+
 }
 
+.navbutton{
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-left: 10px;
+
+}
 .back{
     float:right;
     text-align: center;
     margin-right: 50px;
-    font-size: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 
@@ -80,7 +85,7 @@ h1{
 table{
     border-collapse: collapse;
     width:100%;
-    margin-top:15px;
+    margin-top:30px;
 }
 
 th{
