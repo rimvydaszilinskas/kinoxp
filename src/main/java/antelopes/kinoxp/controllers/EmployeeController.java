@@ -111,4 +111,10 @@ public class EmployeeController {
         snackRepository.create(snack);
         return "redirect:/employees/snacksList";
     }
+
+    @GetMapping("/employees/employeeSchedule")
+    public String employeeSchedule(){
+        return "employees/employeeSchedule";
+    }
+
 }
