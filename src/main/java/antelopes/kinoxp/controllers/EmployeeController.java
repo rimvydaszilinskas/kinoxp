@@ -45,7 +45,7 @@ public class EmployeeController {
         ActiveUser.logout();
         return "index";
     }
-    
+
     @GetMapping("/employees/snacksList")
     public String snacksList(Model model){
         model.addAttribute("snacks", snackRepository.getAll());
