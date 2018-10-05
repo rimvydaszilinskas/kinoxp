@@ -110,6 +110,7 @@ tr:nth-child(even){
     border-radius: 5px;
     text-align: center;
     text-decoration: none;
+    border: none;
 }
 
 .button-login{

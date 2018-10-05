@@ -1,40 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add a movie</title>
+    <link rel="stylesheet" href="/stylesheet.css">
 </head>
 <body>
 
+<nav>
+    <ul>
+        <li class="logo"> <img src="/KinoLogo.png" width="80" height="60"/></li>
+        <li class="back"><a href="/employees/employees">Back</a></li>
+        <li class="back"><a href="/">Logout</a></li>  </ul>
+</nav>
+
 <div class="container">
-    <form action="/movies/add" method="post">
-        <div class="row">
-            <div class="col-25">
-                <label for="title">Title</label>
-            </div>
-            <div class="col-75">
-                <input type="text" id="title" name="title" space="firstname" placeholder="Enter movie title">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="genre">Genre</label>
-            </div>
-            <div class="col-75">
-                <input type="text" id="genre" name="genre" space="lastname" placeholder="Add genre here">
-            </div>
+    <form action="/movie/add" method="post" >
+        <p>Name: <input type="text" name="name"/></p>
+        <p>Genre: <input type="text" name="genre" /></p>
+        <p>Age Limit: <input type="text" name="ageLimit" /></p>
+        <input class="button" type="submit" value="Add"/>
 
-            <label for="ageLimit">Age Limit</label>
-            <div class="col-75">
-                <input type="number" id="ageLimit" name="ageLimit" space="age" placeholder="Enter age limit here. . ">
-            </div>
-        </div>
-
-
-        <div class="row">
-            <input type="submit" value="Add">
-        </div>
     </form>
+
+
 </div>
 
 </body>

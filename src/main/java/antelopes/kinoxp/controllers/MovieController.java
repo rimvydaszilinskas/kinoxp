@@ -31,7 +31,7 @@ public class MovieController {
         int age = Integer.parseInt(ageLimit);
         Movie movie = new Movie(title, genre, age, new LinkedList<>());
         movieRepository.create(movie);
-        return "employees/employees";
+        return "redirect:/employees/employees";
     }
 
     @PostMapping(URL_PATH + "/delete")
