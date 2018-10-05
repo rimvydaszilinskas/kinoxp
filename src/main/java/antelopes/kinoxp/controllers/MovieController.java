@@ -25,7 +25,7 @@ public class MovieController {
     }
 
     @PostMapping(URL_PATH + "/add")
-    public String addMovie(@RequestParam("title")String title,
+    public String addMovie(@RequestParam("name")String title,
                            @RequestParam("genre")String genre,
                            @RequestParam("ageLimit")String ageLimit){
         int age = Integer.parseInt(ageLimit);

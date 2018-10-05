@@ -93,17 +93,6 @@ public class EmployeeController {
     }
 
 
- /*   @GetMapping("/employees/addSnacks")
-    public String addSnacks() {
-        return "employees/addSnacks";
-    }
-
-    @PostMapping("/employees/addSnacks")
-    public String addSnacks(@ModelAttribute Snack snack) {
-        snackRepository.create(snack);
-        return "redirect: /employees/snacksList";
-    }*/
-
     @GetMapping("/employees/addSnacks")
     public String addSnacks(){
         return "employees/addSnacks";
