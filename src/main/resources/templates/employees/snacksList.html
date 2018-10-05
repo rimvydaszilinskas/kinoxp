@@ -3,15 +3,18 @@
 <head>
     <link rel="stylesheet" href="/stylesheet.css">
     <title>Snacks</title>
+
 </head>
 <body>
 <nav>
     <ul>
-        <li class="logo">Kino Cinema</li>
+        <!--<li class="logo">Kino Cinema</li>-->
+        <li class="logo"> <img src="/KinoLogo.png" width="100" height="80"/></li>
         <li class="back"><a href="/employees/snacksList">Back</a></li>
-    </ul>
+        <li class="back"><a href="/">Logout</a></li></ul>
 </nav>
 <div class="container">
+    <a href="/employees/addSnacks" class="button"> Add </a>
     <table>
 
         <thead>
@@ -28,7 +31,7 @@
             <td>
                 <a th:href="@{'updateSnacks?id='+ ${snack.id}}" class="button">Update</a>
                 <a th:href="@{'deleteSnacks?id='+ ${snack.id}}" class="button">Delete</a>
-            </td>
+
         </tr>
         </tbody>
 

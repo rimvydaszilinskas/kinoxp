@@ -2,16 +2,18 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Delete Snacks</title>
+
     <link rel="stylesheet" href="/stylesheet.css">
+
 </head>
 <body>
 <div class="container">
     <h1>Are you sure you want to delete?</h1>
 
-    <form action="/employees/deleteSnacks"  method="post" >
-        <input type="hidden"  th:field="${snack.id}"  />
+    <form action="/employees/deleteSnacks" method="post">
+        <input type="hidden" th:field="${snack.id}"/>
         <input type="submit" value="YES" class="button"/>
-        <a href="/employees/snacksList" class="button" >NO</a>
+        <a href="/employees/snacksList" class="button">NO</a>
     </form>
 </div>
 </body>

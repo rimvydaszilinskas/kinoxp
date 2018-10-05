@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
+
 @Controller
 public class EmployeeController {
     private static final String URL_PATH = "/employees";
@@ -43,6 +45,8 @@ public class EmployeeController {
         ActiveUser.logout();
         return "index";
     }
+
+
 
     @GetMapping("/employees/snacksList")
     public String snacksList(Model model){
@@ -78,10 +82,33 @@ public class EmployeeController {
 
     @PostMapping("/employees/deleteSnacks")
     public String deleteSnacks(@ModelAttribute Snack snack){
-        snackRepository.delete(snack);
+        snackRepository.delete(snack.getId());
         return "redirect:/employees/snacksList";
     }
 
 
+ /*   @GetMapping("/employees/addSnacks")
+    public String addSnacks() {
+        return "employees/addSnacks";
+    }
 
+    @PostMapping("/employees/addSnacks")
+    public String addSnacks(@ModelAttribute Snack snack) {
+        snackRepository.create(snack);
+        return "redirect: /employees/snacksList";
+    }*/
+
+    @GetMapping("/employees/addSnacks")
+    public String addSnacks(){
+        return "employees/addSnacks";
+    }
+
+    @PostMapping("/employees/addSnacks")
+    public String addSnacks(@RequestParam("name")String name,
+                           @RequestParam("price")String price){
+        int p = Integer.parseInt(price);
+        Snack snack = new Snack(name, p);
+        snackRepository.create(snack);
+        return "redirect:/employees/snacksList";
+    }
 }

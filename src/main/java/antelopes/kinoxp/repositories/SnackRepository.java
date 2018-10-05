@@ -70,25 +70,27 @@ public class SnackRepository extends Repository<Snack> {
         return snacks;
     }
 
+
     @Override
     public boolean delete(int id) {
 
         try{
+
             preparedStatement = connection.prepareStatement("DELETE FROM snacks WHERE id=?");
             preparedStatement.setInt(1, id);
-
-            if(preparedStatement.executeUpdate() > 0){
+            preparedStatement.execute();
+          /*  if(preparedStatement.executeUpdate() > 0){*/
                 return true;
-            }
+            /*}*/
         }catch (SQLException ex){
             System.out.println(ex.getSQLState());
         }
         return false;
     }
-
+/*
     public boolean delete(Snack object) {
         try {
-            PreparedStatement preparedStatement = preparedStatement = connection.prepareStatement("DELETE FROM snacks WHERE id= ?") ;
+            PreparedStatement preparedStatement  = connection.prepareStatement("DELETE FROM snacks WHERE id= ?") ;
             preparedStatement.setInt(1,object.getId());
             preparedStatement.execute();
         }catch (SQLException e){
@@ -96,7 +98,7 @@ public class SnackRepository extends Repository<Snack> {
         }
 
         return false;
-    }
+    }*/
 
 
 
@@ -137,5 +139,6 @@ public class SnackRepository extends Repository<Snack> {
             return false;
         }
     }
+
 
 }
