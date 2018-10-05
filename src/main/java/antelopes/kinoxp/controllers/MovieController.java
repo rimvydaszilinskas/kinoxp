@@ -13,26 +13,22 @@ public class MovieController {
     private final static String URL_PATH = "/movies";
     private MovieRepository movieRepository = new MovieRepository();
 
-    @GetMapping(URL_PATH + "/updateMovieList")
-    public String displayMovies(Model model){
-        model.addAttribute(movieRepository.getAll());
-        return "movies/updateMovieList";
-    }
 
     @GetMapping(URL_PATH + "/add")
-    public String addMovie(){
+    public String addAMovie(){
         return "movies/addAMovie";
     }
 
     @PostMapping(URL_PATH + "/add")
-    public String addMovie(@RequestParam("name")String title,
+    public String addAMovie(@RequestParam("title")String title,
                            @RequestParam("genre")String genre,
                            @RequestParam("ageLimit")String ageLimit){
         int age = Integer.parseInt(ageLimit);
         Movie movie = new Movie(title, genre, age, new LinkedList<>());
         movieRepository.create(movie);
-        return "redirect:/employees/employees";
+        return "employees/employees";
     }
+
 
     @PostMapping(URL_PATH + "/delete")
     public String delete(Model model, @RequestParam("id")String id){
@@ -45,12 +41,30 @@ public class MovieController {
         model.addAttribute(movieRepository.getAll());
         return "movies/updateMovieList";
     }
+/*    @GetMapping(URL_PATH + "/updateMovieList")
+    public String displayMovies(Model model){
+        model.addAttribute(movieRepository.getAll());
+        return "movies/updateMovieList";
+    }
 
-    @PostMapping(URL_PATH + "/update")
+    @PostMapping(URL_PATH + "/updateMovieLIst")
     public String update(Model model, @ModelAttribute Movie movie){
         model.addAttribute("updated", movieRepository.update(movie));
         model.addAttribute("movies", movieRepository.getAll());
         return "movies/updateMovieList";
+    }*/
+    @GetMapping(URL_PATH + "/updateMovieList")
+    public String updateMovieList(@RequestParam("id") int movieId, Model model) {
+
+        Movie movie = movieRepository.get(movieId);
+        model.addAttribute("movie", movie);
+        return "movies/updateMovieList";
+    }
+    @PostMapping(URL_PATH + "/updateMovieList")
+    public String updateMovieList(@ModelAttribute Movie movie) {
+
+        movieRepository.update(movie);
+        return "redirect:/employees/employees";
     }
 
     @GetMapping(URL_PATH + "/get/{id}")

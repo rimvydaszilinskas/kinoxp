@@ -5,31 +5,31 @@ import java.util.List;
 
 public class Movie {
 
-    private String movieName, genre;
+    private String name, genre;
     private int ageLimit, id;
     private List<Seat> seats;
 
     public Movie(int id, String name, String genre, int ageLimit) {
         this.id = id;
-        this.movieName = name;
+        this.name = name;
         this.genre = genre;
         this.ageLimit = ageLimit;
         this.seats = new LinkedList<>();
     }
 
-    public Movie(String movieName, String genre, int ageLimit, List<Seat> seats) {
-        this.movieName = movieName;
+    public Movie(String name, String genre, int ageLimit, List<Seat> seats) {
+        this.name = name;
         this.genre = genre;
         this.ageLimit = ageLimit;
         this.seats = seats;
     }
 
     public String getName() {
-        return movieName;
+        return name;
     }
 
     public void setName(String name) {
-        this.movieName = name;
+        this.name = name;
     }
 
     public String getGenre() {

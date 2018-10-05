@@ -1,74 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Movie List</title>
+    <title>Update a movie</title>
+    <link rel="stylesheet" href="/stylesheet.css">
 </head>
 <body>
+<nav>
+    <ul>
+        <li class="logo"> <img src="/KinoLogo.png" width="80" height="60"/></li>
+        <li class="back"><a href="/">Logout</a></li>
+        <li class="back"><a href="/employees/employees">Back</a></li>
+    </ul>
+</nav>
 
 
-
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 15px;
-        }
-    </style>
-</head>
-<body>
-
-<h2>Movie List</h2>
-
-<!---TO DO : Link via thyme leaf, and database for ID movie-->
-
-<table style="width:100%">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Genre</th>
-        <th>Age</th>
-        <th> </th>
-        <th></th>
-    </tr>
-    <tr>
-       <td> </td>
-        <td>Avatar</td>
-        <td>Fantasy</td>
-        <td>13+</td>
-        <td> <button> Update </button> </td>
-        <td> <button> Delete </button> </td>
-    </tr>
-    <tr>
-        <td> </td>
-        <td>The Nun</td>
-        <td>Horror</td>
-        <td>16+</td>
-        <td> <button> Update </button> </td>
-        <td> <button> Delete </button> </td>
-    </tr>
-    <tr>
-        <td> </td>
-        <td>Tarzan</td>
-        <td>Adventure</td>
-        <td>6+</td>
-        <td> <button> Update </button> </td>
-        <td> <button> Delete </button> </td>
-    </tr>
-</table>
-
-<td> <a href="/movies/add">Add a movie</a></td>
+    <div class="container">
+        <h1>Update</h1>
+        <form  action = "/movies/updateMovieList" method="Post" >
+            <input type="hidden" th:field="${movie.id}"/>
+            <p>Name: <input type="text" th:field="${movie.name}"/></p>
+            <p>Genre: <input type="text" th:field="${movie.genre}"/></p>
+            <p>Age Limit: <input type="text" th:field="${movie.ageLimit}"/></p>
 
 
-
-
-</body>
-</html>
+            <input type="submit" value="Update" class="button"/>
+        </form>
+    </div>
 
 
 

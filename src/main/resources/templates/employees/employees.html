@@ -39,7 +39,8 @@
             <td th:text="${movie.genre}"> </td>
             <td th:text="${movie.ageLimit}"> </td>
 
-            <td><a class="button" href="../movies/updateMovieList.html">Update </a>
+            <td>
+                <a th:href="@{'updateMovieList?id='+ ${movie.id}}" class="button">Update</a>
                 <a class="button button-delete" href=" ">Delete </a></td>
         </tr>
         </tbody>
