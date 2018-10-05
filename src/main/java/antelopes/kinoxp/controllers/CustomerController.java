@@ -15,11 +15,15 @@ public class CustomerController{
     private Repository<Movie> movieRepository;
     private Repository<Reservation> reservationRepository;
     private Repository<Snack> snackRepository;
+    private Repository<Seat> seatRepository;
+    private Repository<Customer> customerRepository;
 
     public CustomerController(){
         movieRepository = new MovieRepository();
         reservationRepository= new ReservationRepository();
         snackRepository = new SnackRepository();
+        seatRepository = new SeatRepository();
+        customerRepository = new CustomerRepository();
     }
 
     @GetMapping("/customers/movieList")
@@ -33,12 +37,17 @@ public class CustomerController{
     public String booking(@RequestParam("id")int movieId, Model model)
     {
         model.addAttribute("movie", movieRepository.get(movieId));
+        /**
+        model.addAttribute("seat", seatRepository.getAll());
+        model.addAttribute("customer", customerRepository.getAll());
+         **/
+        model.addAttribute("reservation", reservationRepository.getAll());
+
         return "customers/booking";
     }
 
     @PostMapping("/booking")
-    public String booking(@ModelAttribute Reservation reservation, @ModelAttribute Customer customer, @ModelAttribute Seat seat, Model model){
-        model.addAttribute("seat", seat);
+    public String booking(@ModelAttribute Reservation reservation){
 
         reservationRepository.create(reservation);
         return "redirect:/customers/movieList";

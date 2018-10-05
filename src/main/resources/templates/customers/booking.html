@@ -12,26 +12,25 @@
 <p>
     <input type="hidden" th:value="${movie.id}" name="id"/>
     <p th:text="'Movie name: ' + ${movie.name} "></p>
+
+
 </p>
+
+    <div th:with="reservation.movieName=${movie.name}">
 
 <h2>CUSTOMER DETAILS</h2>
 
 <form action="booking" method="post">
 
-    <p>Name:  <input type="text" name="customerName" /> </p>
+    <p>Name: <input type="text" name="reservation.customerName" /> </p>
 
-    <p>Date: <input type="date" name="date"/> </p>
+    <p>Date: <input type="date" name="reservation.date"/> </p>
 
     <p>Movie time:
-    <select th:each=" reservation :${reservations}">
-        <option></option>
-    </select>
+        "TODO"
     </p>
 
-    <p>Seat:
-        <select th:field="${seats.id}">
-            <option th:each="seat : ${seats}" th:value="${seat.id}" th:text="${seat.space}" ></option>
-        </select>
+    <p>Seat: <input type="text" name="reservation.seatNumber">
     </p>
 
     <p>

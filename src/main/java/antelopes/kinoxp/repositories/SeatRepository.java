@@ -14,7 +14,25 @@ public class SeatRepository extends Repository<Seat> {
     @Override
     public Seat get(int id) {
 
-        return null;
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM  seats WHERE  id= ?");
+            preparedStatement.setInt(1,id);
+            resultSet = preparedStatement.executeQuery();
+
+            resultSet.next();
+
+            return  new Seat(
+                    resultSet.getInt("id"),
+                    resultSet.getString("space"),
+                    resultSet.getInt("room"),
+                    resultSet.getInt("booked")
+            );
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return  null;
+        }
     }
 
     public Seat get(String space) {
