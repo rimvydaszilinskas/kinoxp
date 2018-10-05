@@ -126,7 +126,7 @@ public class MovieRepository extends Repository<Movie> {
     public boolean create(Movie object) {
 
         try {
-            preparedStatement = connection.prepareStatement("INSERT INTO movies(id,name,genre,age_limit) VALUES(?,?,?,?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO movies(id,name,genre,ageLimit) VALUES(?,?,?,?)");
             preparedStatement.setInt(1,object.getId());
             preparedStatement.setString(2,object.getName());
             preparedStatement.setString(3,object.getGenre());

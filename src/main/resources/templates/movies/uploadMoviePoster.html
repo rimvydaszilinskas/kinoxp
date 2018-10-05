@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload movie poster</title>
+</head>
+
+<body>
+<h2>Movie title</h2>
+
+<form method="POST" action="/movies/image/upload" enctype="multipart/form-data">
+    <!-- Mandatory hidden field to post the ID -->
+    <input type="number" id="id" name="id" value="1" hidden>
+    Please select a file to upload : <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+
+
+</form>
+
+</body>
+</html>
