@@ -23,22 +23,15 @@
     <p>Date: <input type="date" name="date"/> </p>
 
     <p>Movie time:
-    <select id="screeningTime" space="country">
-        <option value="time1">16:00</option>
-        <option value="time2">18:00</option>
-        <option value="time3">20:00</option>
+    <select th:each=" reservation :${reservations}">
+        <option></option>
     </select>
     </p>
 
     <p>Seat:
-
-    <select id="country" space="seats">
-        <option value="rowA">1A</option>
-        <option value="rowB">1B</option>
-        <option value="rowC">1C</option>
-        <option value="rowD">1D</option>
-        <option value="rowE">1E</option>
-    </select>
+        <select th:field="${seats.id}">
+            <option th:each="seat : ${seats}" th:value="${seat.id}" th:text="${seat.space}" ></option>
+        </select>
     </p>
 
     <p>
