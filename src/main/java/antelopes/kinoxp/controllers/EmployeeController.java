@@ -76,8 +76,8 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees/deleteSnacks")
-    public String deleteSnacks(@ModelAttribute Snack snack){
-        snackRepository.delete(snack.getId());
+    public String deleteSnacks(@RequestParam("id") int snackId){
+        snackRepository.delete(snackId);
         return "redirect:/employees/snacksList";
     }
 
@@ -104,7 +104,7 @@ public class EmployeeController {
         int p = Integer.parseInt(price);
         Snack snack = new Snack(name, p);
         snackRepository.create(snack);
-        return "redirect:/employees/sna1cksList";
+        return "redirect:/employees/snacksList";
     }
 
     @GetMapping("/employees/employeeSchedule")
