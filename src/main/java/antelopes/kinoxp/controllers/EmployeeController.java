@@ -109,7 +109,7 @@ public class EmployeeController {
 
     @GetMapping("/employees/employeeSchedule")
     public String employeeSchedule(){
-        return "employees/employeeSchedule2";
+        return "employees/employeeSchedule";
     }
 
 }
