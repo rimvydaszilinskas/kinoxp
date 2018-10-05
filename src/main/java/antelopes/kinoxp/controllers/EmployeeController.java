@@ -30,7 +30,7 @@ public class EmployeeController {
             if(employee != null){
                 if(PasswordHash.validatePassword(password, employee.getPassword())){
                     ActiveUser.login(employee);
-                    return "employees/employees";
+                    return "redirect: /employees/employees";
                 }
             }
         } catch (Exception ex){
