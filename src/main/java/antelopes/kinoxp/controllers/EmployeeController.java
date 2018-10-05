@@ -3,6 +3,7 @@ package antelopes.kinoxp.controllers;
 import antelopes.kinoxp.models.Employee;
 import antelopes.kinoxp.models.Snack;
 import antelopes.kinoxp.repositories.EmployeeRepository;
+import antelopes.kinoxp.repositories.MovieRepository;
 import antelopes.kinoxp.repositories.SnackRepository;
 import antelopes.kinoxp.utilities.ActiveUser;
 import antelopes.kinoxp.utilities.PasswordHash;
@@ -17,6 +18,7 @@ public class EmployeeController {
     private static final String URL_PATH = "/employees";
     private EmployeeRepository employeeRepository = new EmployeeRepository();
     private SnackRepository snackRepository= new SnackRepository();
+    private MovieRepository movieRepository = new MovieRepository();
 
     @GetMapping(URL_PATH + "/login")
     public String login(){
@@ -30,7 +32,7 @@ public class EmployeeController {
             if(employee != null){
                 if(PasswordHash.validatePassword(password, employee.getPassword())){
                     ActiveUser.login(employee);
-                    return "redirect: /employees/employees";
+                    return "redirect:/employees/employees";
                 }
             }
         } catch (Exception ex){
@@ -38,6 +40,15 @@ public class EmployeeController {
         }
         // TODO create a link to the other page
         return "employees/login";
+    }
+
+    @GetMapping(URL_PATH + "/employees")
+    public String movieList(Model model){
+        // Check if the user is logged, TODO copy to all the methods that should be secured by password
+        if(!ActiveUser.isLoggedIn())
+            return "redirect:/employees/login";
+        model.addAttribute("movies", movieRepository.getAll());
+        return "employees/employees";
     }
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, path = URL_PATH + "/logout")
@@ -76,8 +87,8 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees/deleteSnacks")
-    public String deleteSnacks(@ModelAttribute Snack snack){
-        snackRepository.delete(snack.getId());
+    public String deleteSnacks(@RequestParam("id") int snackId){
+        snackRepository.delete(snackId);
         return "redirect:/employees/snacksList";
     }
 
@@ -104,7 +115,7 @@ public class EmployeeController {
         int p = Integer.parseInt(price);
         Snack snack = new Snack(name, p);
         snackRepository.create(snack);
-        return "redirect:/employees/sna1cksList";
+        return "redirect:/employees/snacksList";
     }
 
     @GetMapping("/employees/employeeSchedule")
