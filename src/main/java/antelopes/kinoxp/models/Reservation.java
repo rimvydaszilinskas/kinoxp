@@ -4,43 +4,47 @@ import java.time.LocalDate;
 
 public class Reservation {
 
-    private Movie movie;
+    private String movieName;
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     private int time;
     private String seatNumber;
-    private Customer customer;
+    private String customerName;
     private int id;
 
 
-    public Reservation(int id, Movie movie, LocalDate date, int time, String seat, Customer customer) {
+    public Reservation(int id, String movieName, LocalDate date, int time, String seat, String customerName) {
         this.id = id;
-        this.movie = movie;
+        this.movieName = movieName;
         this.date = date;
         this.time = time;
         this.seatNumber = seat;
-        this.customer = customer;
+        this.customerName = customerName;
     }
 
-    public Reservation(int id, Movie movie, String date, double time, String seat, Customer customer) {
+    public Reservation(int id, String movieName, String date,double time, String seat, String customerName) {
         this.id = id;
-        this.movie = movie;
+        this.movieName = movieName;
         this.setDate(date);
         this.time = (int) time;
         this.seatNumber = seat;
-        this.customer = customer;
+        this.customerName = customerName;
+    }
+
+    public Reservation(String movieName, LocalDate date, String seat, String customerName) {
+        this.movieName = movieName;
+        this.date = date;
+        this.time = time;
+        this.seatNumber = seat;
+        this.customerName = customerName;
     }
 
     public String getMovieName() {
-        return movie.getName();
+        return movieName;
     }
 
-    public Movie getMovie() {
-        return movie;
-    }
-
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public void setMovie(String movieName) {
+        this.movieName = movieName;
     }
 
     public LocalDate getDate() {
@@ -72,12 +76,12 @@ public class Reservation {
         this.seatNumber = seatNumber;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getCustomer() {
+        return customerName;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomer(String customerName) {
+        this.customerName = customerName;
     }
 
     public void setId(int id) {
