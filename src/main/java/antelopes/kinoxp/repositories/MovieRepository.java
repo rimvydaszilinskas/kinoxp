@@ -3,12 +3,10 @@ package antelopes.kinoxp.repositories;
 import antelopes.kinoxp.models.Movie;
 import antelopes.kinoxp.repositories.util.Database;
 
-import java.io.IOException;
-import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 

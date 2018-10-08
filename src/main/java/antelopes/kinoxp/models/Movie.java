@@ -24,6 +24,12 @@ public class Movie {
         this.seats = seats;
     }
 
+    public Movie(String name, String genre, int ageLimit) {
+        this.name=name;
+        this.genre=genre;
+        this.ageLimit=ageLimit;
+    }
+
     public String getName() {
         return name;
     }

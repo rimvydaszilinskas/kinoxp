@@ -20,7 +20,7 @@
 <div class="container">
     <h1> Movies being displayed in the cinema</h1>
 
-    <a class="button" href="/movies/add">Add new movie </a>
+    <a class="button" href="/movies/addAMovie">Add new movie </a>
 
     <table>
         <thead>
@@ -40,8 +40,9 @@
             <td th:text="${movie.ageLimit}"> </td>
 
             <td>
-                <a th:href="@{'updateMovieList?id='+ ${movie.id}}" class="button">Update</a>
-                <a class="button button-delete" href=" ">Delete </a></td>
+                <a th:href="@{'/movies/updateMovieList?id='+ ${movie.id}}" class="button">Update</a>
+                <a th:href="@{'/movies/deleteMovie?id='+ ${movie.id}}" class="button button-delete">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

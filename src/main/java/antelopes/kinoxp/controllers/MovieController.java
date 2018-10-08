@@ -14,20 +14,25 @@ public class MovieController {
     private MovieRepository movieRepository = new MovieRepository();
 
 
-    @GetMapping(URL_PATH + "/add")
+
+
+    @GetMapping(URL_PATH + "/addAMovie")
     public String addAMovie(){
         return "movies/addAMovie";
     }
 
-    @PostMapping(URL_PATH + "/add")
+    @PostMapping(URL_PATH + "/addAMovie")
     public String addAMovie(@RequestParam("title")String title,
-                           @RequestParam("genre")String genre,
-                           @RequestParam("ageLimit")String ageLimit){
+                            @RequestParam("genre")String genre,
+                            @RequestParam("ageLimit") String ageLimit){
         int age = Integer.parseInt(ageLimit);
-        Movie movie = new Movie(title, genre, age, new LinkedList<>());
+        Movie movie = new Movie(title, genre, age);
         movieRepository.create(movie);
-        return "employees/employees";
+        return "redirect:/employees/employees";
     }
+
+
+
 
 
     @PostMapping(URL_PATH + "/delete")
@@ -41,31 +46,25 @@ public class MovieController {
         model.addAttribute(movieRepository.getAll());
         return "movies/updateMovieList";
     }
-/*    @GetMapping(URL_PATH + "/updateMovieList")
-    public String displayMovies(Model model){
-        model.addAttribute(movieRepository.getAll());
-        return "movies/updateMovieList";
-    }
 
-    @PostMapping(URL_PATH + "/updateMovieLIst")
-    public String update(Model model, @ModelAttribute Movie movie){
-        model.addAttribute("updated", movieRepository.update(movie));
-        model.addAttribute("movies", movieRepository.getAll());
-        return "movies/updateMovieList";
-    }*/
+
     @GetMapping(URL_PATH + "/updateMovieList")
     public String updateMovieList(@RequestParam("id") int movieId, Model model) {
 
+        System.out.println("get maps update");
         Movie movie = movieRepository.get(movieId);
         model.addAttribute("movie", movie);
         return "movies/updateMovieList";
     }
+
     @PostMapping(URL_PATH + "/updateMovieList")
     public String updateMovieList(@ModelAttribute Movie movie) {
 
         movieRepository.update(movie);
         return "redirect:/employees/employees";
     }
+
+
 
     @GetMapping(URL_PATH + "/get/{id}")
     public String getMovie(Model model, @PathVariable("id")String id){
@@ -76,5 +75,22 @@ public class MovieController {
             ex.printStackTrace();
         }
         return "movies/displayMovie";
+    }
+
+
+
+
+    @GetMapping("/movies/deleteMovie")
+    public String deleteSnacks(@RequestParam("id") int movieId, Model model )
+    {
+        Movie movie = movieRepository.get(movieId);
+        model.addAttribute("movie",movie);
+        return "movies/deleteMovie";
+    }
+
+    @PostMapping("/movies/deleteMovie")
+    public String deleteSnacks(@RequestParam("id") int movieId){
+        movieRepository.delete(movieId);
+        return "redirect:/employees/employees";
     }
 }
