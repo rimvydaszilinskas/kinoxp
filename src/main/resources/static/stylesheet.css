@@ -101,6 +101,10 @@ tr:nth-child(even){
     background-color: darkslategrey;
 }
 
+.schedule{
+    margin-bottom: 20px !important;
+}
+
 .button {
     background-color: lightgreen;
     color: black;
@@ -179,11 +183,27 @@ table, th, td {
     background-color: #ddd
 }
 
-   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */   .show {
+   .show {
     display: block;
 }
 
 .image{
 
     border-radius: 50%;
+}
+input[type=text] {
+    border: none;
+    border-bottom: 1px solid lightgrey;
+    background-color: black;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.field{
+    border: none;
+    border-bottom: 1px solid lightgrey;
+    background-color: darkslategrey !important;
+    color: white;
+    margin-bottom: 5px;
+
 }
