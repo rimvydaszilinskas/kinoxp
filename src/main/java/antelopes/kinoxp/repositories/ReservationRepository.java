@@ -77,13 +77,12 @@ public class ReservationRepository extends Repository<Reservation> {
                         resultSet.getString("customers.name")
                 );
                 reservations.add(new Reservation(
-                            resultSet.getInt("reservations.id"),
-                            movie,
-                            resultSet.getString("reservations.date"),
-                            resultSet.getInt("reservations.time"),
-                            resultSet.getString("seats.space"),
-                            customer
-                    ));
+                        resultSet.getInt("reservations.id"),
+                        movie,
+                        resultSet.getString("reservations.date"),
+                        resultSet.getInt("reservations.time"),
+                        resultSet.getString("seats.space"),
+                        customer));
             }
         } catch (SQLException ex){
             System.out.println(ex.getSQLState());

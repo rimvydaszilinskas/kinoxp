@@ -4,6 +4,9 @@ public class Movie {
     private String name, genre;
     private int ageLimit, id;
 
+    public Movie(){
+
+    }
     public Movie(int id){
         this.id = id;
     }
