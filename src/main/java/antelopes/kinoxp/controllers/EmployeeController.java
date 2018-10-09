@@ -2,9 +2,11 @@ package antelopes.kinoxp.controllers;
 
 import antelopes.kinoxp.models.Employee;
 import antelopes.kinoxp.models.Snack;
+import antelopes.kinoxp.models.Schedule;
 import antelopes.kinoxp.repositories.EmployeeRepository;
 import antelopes.kinoxp.repositories.MovieRepository;
 import antelopes.kinoxp.repositories.SnackRepository;
+import antelopes.kinoxp.repositories.ScheduleRepository;
 import antelopes.kinoxp.utilities.ActiveUser;
 import antelopes.kinoxp.utilities.PasswordHash;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,7 @@ public class EmployeeController {
     private EmployeeRepository employeeRepository = new EmployeeRepository();
     private SnackRepository snackRepository= new SnackRepository();
     private MovieRepository movieRepository = new MovieRepository();
+    private ScheduleRepository scheduleRepository = new ScheduleRepository();
 
     @GetMapping(URL_PATH + "/login")
     public String login(){
@@ -133,6 +136,27 @@ public class EmployeeController {
             return "redirect:/employees/login";
 
         return "employees/employeeSchedule";
+    }
+
+    @GetMapping("/employees/schedule")
+    public String schedule(Model model){
+        if(!ActiveUser.isLoggedIn())
+            return "redirect:/employees/login";
+        model.addAttribute("scheduleList", scheduleRepository.getAll());
+        return "employees/schedule";
+    }
+
+    @GetMapping("/employees/updateSchedule")
+    public String updateSchedule(Model model) {
+        model.addAttribute("scheduleList", scheduleRepository.getAll());
+        return "employees/updateSchedule";
+    }
+
+    @PostMapping("/employees/updateSchedule")
+    public String updateSchedule(Model model, @ModelAttribute("employee") Schedule schedule) {
+        scheduleRepository.update(schedule);
+        model.addAttribute("scheduleList", scheduleRepository.getAll());
+        return "redirect:/employees/updateSchedule";
     }
 
 }

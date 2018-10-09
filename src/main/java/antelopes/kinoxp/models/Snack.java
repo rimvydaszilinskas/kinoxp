@@ -4,6 +4,10 @@ public class Snack {
     private String name;
     private int id, price;
 
+    public Snack(){
+
+    }
+
     public Snack(int id, String name, int price){
         this.id=id;
         this.name=name;

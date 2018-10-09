@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Update a movie</title>
     <link rel="stylesheet" href="/stylesheet.css">
+    <title>Movie List</title>
 </head>
 <body>
 <nav>
@@ -16,11 +16,11 @@
 
     <div class="container">
         <h1>Update</h1>
-        <form  action = "/movies/updateMovieList" method="Post" >
-            <input type="hidden" th:field="${movie.id}"/>
-            <p>Name: <input type="text" th:field="${movie.name}"/></p>
-            <p>Genre: <input type="text" th:field="${movie.genre}"/></p>
-            <p>Age Limit: <input type="text" th:field="${movie.ageLimit}"/></p>
+        <form  action = "/movies/updateMovieList" method="post" >
+            <input type="hidden" th:field="${movie.id}" name="id"/>
+            <p>Name: <input type="text" th:field="${movie.name}" name="name"/></p>
+            <p>Genre: <input type="text" th:field="${movie.genre}" name="genre"/></p>
+            <p>Age Limit: <input type="text" th:field="${movie.ageLimit}" name="ageLimit"/></p>
 
 
             <input type="submit" value="Update" class="button"/>
