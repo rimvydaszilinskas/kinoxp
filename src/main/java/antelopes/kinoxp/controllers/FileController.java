@@ -70,6 +70,7 @@ public class FileController {
         str.append("src/main/resources/static/posters/poster-");
         str.append(id);
         str.append(".png");
+
         FileSystemResource imgFile = new FileSystemResource(str.toString());
         if(!imgFile.exists()){
             return null;

@@ -59,6 +59,9 @@ public class EmployeeController {
 
     @GetMapping("/employees/snacksList")
     public String snacksList(Model model){
+        if(!ActiveUser.isLoggedIn())
+            return "redirect:/employees/login";
+
         model.addAttribute("snacks", snackRepository.getAll());
         return "employees/snacksList";
     }
@@ -66,6 +69,8 @@ public class EmployeeController {
 
     @GetMapping("/employees/updateSnacks")
     public String updateSnacks(@RequestParam("id") int snacksId, Model model) {
+        if(!ActiveUser.isLoggedIn())
+            return "redirect:/employees/login";
 
         Snack snack = snackRepository.get(snacksId);
         model.addAttribute("snack", snack);
@@ -73,6 +78,8 @@ public class EmployeeController {
     }
     @PostMapping("/employees/updateSnacks")
     public String updateSnacks(@ModelAttribute Snack snack) {
+        if(!ActiveUser.isLoggedIn())
+            return "redirect:/employees/login";
 
         snackRepository.update(snack);
         return "redirect:/employees/snacksList";
@@ -81,6 +88,9 @@ public class EmployeeController {
     @GetMapping("/employees/deleteSnacks")
     public String deleteSnacks(@RequestParam("id") int snackId, Model model )
     {
+        if(!ActiveUser.isLoggedIn())
+            return "redirect:/employees/login";
+
         Snack snack = snackRepository.get(snackId);
         model.addAttribute("snack",snack);
         return "employees/deleteSnacks";
@@ -88,6 +98,9 @@ public class EmployeeController {
 
     @PostMapping("/employees/deleteSnacks")
     public String deleteSnacks(@RequestParam("id") int snackId){
+        if(!ActiveUser.isLoggedIn())
+            return "redirect:/employees/login";
+
         snackRepository.delete(snackId);
         return "redirect:/employees/snacksList";
     }
@@ -95,12 +108,18 @@ public class EmployeeController {
 
     @GetMapping("/employees/addSnacks")
     public String addSnacks(){
+        if(!ActiveUser.isLoggedIn())
+            return "redirect:/employees/login";
+
         return "employees/addSnacks";
     }
 
     @PostMapping("/employees/addSnacks")
     public String addSnacks(@RequestParam("name")String name,
                            @RequestParam("price")String price){
+        if(!ActiveUser.isLoggedIn())
+            return "redirect:/employees/login";
+
         int p = Integer.parseInt(price);
         Snack snack = new Snack(name, p);
         snackRepository.create(snack);
@@ -110,6 +129,9 @@ public class EmployeeController {
 
     @GetMapping("/employees/employeeSchedule")
     public String employeeSchedule(){
+        if(!ActiveUser.isLoggedIn())
+            return "redirect:/employees/login";
+
         return "employees/employeeSchedule";
     }
 
