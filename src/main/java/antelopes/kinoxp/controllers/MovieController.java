@@ -13,9 +13,6 @@ public class MovieController {
     private final static String URL_PATH = "/movies";
     private MovieRepository movieRepository = new MovieRepository();
 
-
-
-
     @GetMapping(URL_PATH + "/addAMovie")
     public String addAMovie(){
         return "movies/addAMovie";

@@ -35,15 +35,17 @@ public class FileController {
         if(!image.isEmpty()){
             try{
                 BufferedImage src = ImageIO.read(new ByteArrayInputStream(image.getBytes()));
-                File destination = new File("files/poster-" + movieID + ".png");
+                File destination = new File("src/main/resources/static/images/poster-" + movieID + ".png");
                 ImageIO.write(src, "png", destination);
             } catch (IOException ex){
                 // Do something about the error
+                System.out.println("shitty error");
             }
         } else {
+            System.out.println("no file");
             //do something if the file is empty
         }
-        return "";
+        return "movies/uploadMoviePoster";
     }
 
     @GetMapping(value = "/movies/poster/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
@@ -51,21 +53,22 @@ public class FileController {
         try{
             int movieID = Integer.parseInt(id);
             StringBuilder str = new StringBuilder();
-            str.append("src/main/resources/static/posters/poster-");
+            str.append("src/main/resources/static/images/poster-");
             str.append(movieID);
             str.append(".png");
             FileSystemResource imgFile = new FileSystemResource(str.toString());
             response.setContentType(MediaType.IMAGE_JPEG_VALUE);
             StreamUtils.copy(imgFile.getInputStream(), response.getOutputStream());
         } catch (FileNotFoundException ex){
-            // Include message here
+            System.out.println("no file");
         } catch (IOException ex){
-            // Include message here
+            System.out.println("diegoexceptio");
         }
     }
 
     // returns image path to use in thymeleaf
-    public String getImagePath(int id){
+    public static String getImagePath(int id)
+    {
         StringBuilder str = new StringBuilder();
         str.append("src/main/resources/static/posters/poster-");
         str.append(id);
