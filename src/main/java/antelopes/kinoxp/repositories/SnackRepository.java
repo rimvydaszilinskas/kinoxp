@@ -107,7 +107,7 @@ public class SnackRepository extends Repository<Snack> {
     public boolean update(Snack object) {
 
         try {
-            preparedStatement = connection.prepareStatement("UPDATE snacks SET name = ? , price = ? WHERE id= ? ");
+            preparedStatement = connection.prepareStatement("UPDATE snacks SET name=?, price=? WHERE id=?");
             preparedStatement.setString(1,object.getName());
             preparedStatement.setInt(2,object.getPrice());
             preparedStatement.setInt(3,object.getId());
