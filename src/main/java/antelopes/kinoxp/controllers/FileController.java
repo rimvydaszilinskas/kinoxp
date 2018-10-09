@@ -70,17 +70,18 @@ public class FileController {
     public static String getImagePath(int id)
     {
         StringBuilder str = new StringBuilder();
-        str.append("src/main/resources/static/posters/poster-");
+        str.append("src/main/resources/static/images/poster-");
         str.append(id);
         str.append(".png");
 
         FileSystemResource imgFile = new FileSystemResource(str.toString());
         if(!imgFile.exists()){
+            System.out.println("not found " + id);
             return null;
         }
 
         str = new StringBuilder();
-        str.append("poster-").append(id).append(".png");
+        str.append("/images/poster-").append(id).append(".png");
         return str.toString();
     }
 }

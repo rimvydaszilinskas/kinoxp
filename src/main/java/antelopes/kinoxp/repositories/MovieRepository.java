@@ -60,8 +60,6 @@ public class MovieRepository extends Repository<Movie> {
                         resultSet.getString("name"),
                         resultSet.getString("genre"),
                         resultSet.getInt("ageLimit")));
-
-
             }
 
         } catch (SQLException e) {

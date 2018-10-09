@@ -61,21 +61,12 @@ public class ReservationRepository extends Repository<Reservation> {
                         resultSet.getString("movies.genre"),
                         resultSet.getInt("movies.ageLimit"));
                 reservations.add(new Reservation(
-<<<<<<< HEAD
-                            resultSet.getInt("reservations.id"),
-                            movie,
-                            resultSet.getString("reservations.date"),
-                            resultSet.getString("seats.space"),
-                            resultSet.getString("reservations.customer")
-                    ));
-=======
                         resultSet.getInt("reservations.id"),
                         movie,
                         resultSet.getString("reservations.date"),
-                        resultSet.getInt("reservations.time"),
                         resultSet.getString("seats.space"),
-                        customer));
->>>>>>> fe470f6e6872907d03105231a7b7909633f901af
+                        resultSet.getString("reservations.customer")
+                    ));
             }
         } catch (SQLException ex){
             System.out.println(ex.getSQLState());
