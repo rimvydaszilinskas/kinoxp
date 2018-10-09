@@ -36,7 +36,9 @@ public class CustomerController{
     @GetMapping("/booking")
     public String booking(@RequestParam("id")int movieId, Model model)
     {
+        System.out.println(movieId);
         model.addAttribute("movie", movieRepository.get(movieId));
+        model.addAttribute("seats", SeatsArray.getSeats());
         /**
         model.addAttribute("seat", seatRepository.getAll());
         model.addAttribute("customer", customerRepository.getAll());
@@ -47,11 +49,16 @@ public class CustomerController{
     }
 
     @PostMapping("/booking")
-    public String booking(@ModelAttribute Reservation reservation){
-
+    public String booking(@RequestParam("movieID")int movieID,
+                          @RequestParam("customerName")String customerName,
+                          @RequestParam("date")String date,
+                          @RequestParam("seat")String seat){
+        date = date.replace("/", "-");
+        Movie movie = new Movie(movieID);
+        System.out.println(movieID);
+        Reservation reservation = new Reservation(movie, date, seat, customerName);
         reservationRepository.create(reservation);
         return "redirect:/customers/movieList";
-
     }
 
     @GetMapping("/details")

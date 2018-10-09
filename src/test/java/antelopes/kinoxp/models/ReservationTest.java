@@ -12,7 +12,7 @@ public class ReservationTest {
     private Movie movie = new Movie(1, "Avatar", "Horror", 18);
     private Seat seat = new Seat(1, "1A", 1, 1);
     private Customer customer = new Customer(1, "Stefan");
-    private Reservation reservation = new Reservation(1, movie, LocalDate.parse("2015-03-03").toString(), 1735, "1A", customer);
+    private Reservation reservation = new Reservation(1, movie, LocalDate.parse("2015-03-03").toString(), "1A", customer);
 
     @Test
     public void getId() {
@@ -45,17 +45,6 @@ public class ReservationTest {
     public void setSeat() {
         seat.setBooked(0);
         assertEquals(0, seat.isBooked());
-    }
-
-    @Test
-    public void getTime() {
-        assertEquals(1735, reservation.getTime());
-    }
-
-    @Test
-    public void setTime() {
-        reservation.setTime(1810);
-        assertEquals(1810, reservation.getTime());
     }
 
     @Test
