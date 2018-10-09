@@ -3,6 +3,7 @@ package antelopes.kinoxp.models;
 public class Movie {
     private String name, genre;
     private int ageLimit, id;
+    private String img_url;
 
     public Movie(){
 
@@ -54,6 +55,14 @@ public class Movie {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setImg_url(String img_url){
+        this.img_url = img_url;
+    }
+
+    public String getImg_url(){
+        return img_url;
     }
 }
 

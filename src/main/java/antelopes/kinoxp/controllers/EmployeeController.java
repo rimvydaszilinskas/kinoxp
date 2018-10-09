@@ -1,6 +1,7 @@
 package antelopes.kinoxp.controllers;
 
 import antelopes.kinoxp.models.Employee;
+import antelopes.kinoxp.models.Movie;
 import antelopes.kinoxp.models.Snack;
 import antelopes.kinoxp.models.Schedule;
 import antelopes.kinoxp.repositories.EmployeeRepository;
@@ -12,6 +13,9 @@ import antelopes.kinoxp.utilities.PasswordHash;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.LinkedList;
+import java.util.List;
 
 @Controller
 public class EmployeeController {
@@ -50,7 +54,15 @@ public class EmployeeController {
         // Check if the user is logged
         if(!ActiveUser.isLoggedIn())
             return "redirect:/employees/login";
-        model.addAttribute("movies", movieRepository.getAll());
+        List<Movie> movies = movieRepository.getAll();
+        List<Movie> modelMovie = new LinkedList<>();
+        for(Movie movie : movies){
+            String path = FileController.getImagePath(movie.getId());
+            movie.setImg_url(path);
+            modelMovie.add(movie);
+        }
+
+        model.addAttribute("movies", modelMovie);
         return "employees/employees";
     }
 

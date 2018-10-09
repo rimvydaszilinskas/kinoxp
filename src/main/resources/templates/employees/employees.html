@@ -21,10 +21,10 @@
     <h1> Movies being displayed in the cinema</h1>
 
     <a class="button" href="/movies/addAMovie">Add new movie </a>
-
     <table>
         <thead>
         <tr>
+            <th>Ima</th>
             <th>Name</th>
             <th>Genre</th>
             <th>Age limit</th>
@@ -35,7 +35,8 @@
 
         <tbody>
         <tr th:each="movie : ${movies}">
-            <td th:text="${movie.name}"> </td>
+            <td><img th:src="${movie.img_url}" style="max-width:100px; max-height:100px"/></td>
+            <td th:text="${movie.name}"></td>
             <td th:text="${movie.genre}"> </td>
             <td th:text="${movie.ageLimit}"> </td>
 
