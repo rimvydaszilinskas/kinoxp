@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @Controller
 public class CustomerController{
 
@@ -29,7 +32,15 @@ public class CustomerController{
     @GetMapping("/customers/movieList")
     public String movieList(Model model) {
 
-        model.addAttribute("movies", movieRepository.getAll());
+        List<Movie> movies = movieRepository.getAll();
+        List<Movie> modelMovie = new LinkedList<>();
+        for(Movie movie : movies){
+            String path = FileController.getImagePath(movie.getId());
+            movie.setImg_url(path);
+            modelMovie.add(movie);
+        }
+
+        model.addAttribute("movies", modelMovie);
         return "customers/movieList";
     }
 

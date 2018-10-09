@@ -18,6 +18,7 @@
     <table>
         <thead>
         <tr>
+            <th></th>
             <th>Name</th>
             <th>Genre</th>
             <th>Age limit</th>
@@ -28,7 +29,8 @@
 
         <tbody>
         <tr th:each="movie : ${movies}">
-            <td th:text="${movie.name}"> </td>
+            <td><img th:src="${movie.img_url}" style="max-width:100px; max-height:100px"/></td>
+            <td th:text="${movie.name}"></td>
             <td th:text="${movie.genre}"> </td>
             <td th:text="${movie.ageLimit}"> </td>
             <td><a th:href="@{'/booking?id=' + ${movie.id}}"  class="button">Book</a></td>
