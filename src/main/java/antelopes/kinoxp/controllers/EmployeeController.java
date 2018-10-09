@@ -22,6 +22,8 @@ public class EmployeeController {
 
     @GetMapping(URL_PATH + "/login")
     public String login(){
+        if(ActiveUser.isLoggedIn())
+            return "redirect:/employees/employees";
         return "employees/login";
     }
 
@@ -44,7 +46,7 @@ public class EmployeeController {
 
     @GetMapping(URL_PATH + "/employees")
     public String movieList(Model model){
-        // Check if the user is logged, TODO copy to all the methods that should be secured by password
+        // Check if the user is logged
         if(!ActiveUser.isLoggedIn())
             return "redirect:/employees/login";
         model.addAttribute("movies", movieRepository.getAll());

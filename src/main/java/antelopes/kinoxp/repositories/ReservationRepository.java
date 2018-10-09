@@ -162,7 +162,7 @@ public class ReservationRepository extends Repository<Reservation> {
             preparedStatement.setInt(2, seat.getId());
             preparedStatement.setString(3, object.getDate().toString());
             preparedStatement.setInt(4, object.getTime());
-            preparedStatement.setInt(5, object.getCustomer().getId());
+            preparedStatement.setString(5, object.getCustomer());
 
             if(preparedStatement.executeUpdate() > 0){
                 return true;

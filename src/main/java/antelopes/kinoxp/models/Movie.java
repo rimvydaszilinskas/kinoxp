@@ -1,33 +1,24 @@
 package antelopes.kinoxp.models;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Movie {
-
     private String name, genre;
     private int ageLimit, id;
-    private List<Seat> seats;
+
+    public Movie(int id){
+        this.id = id;
+    }
 
     public Movie(int id, String name, String genre, int ageLimit) {
         this.id = id;
         this.name = name;
         this.genre = genre;
         this.ageLimit = ageLimit;
-        this.seats = new LinkedList<>();
-    }
-
-    public Movie(String name, String genre, int ageLimit, List<Seat> seats) {
-        this.name = name;
-        this.genre = genre;
-        this.ageLimit = ageLimit;
-        this.seats = seats;
     }
 
     public Movie(String name, String genre, int ageLimit) {
-        this.name=name;
-        this.genre=genre;
-        this.ageLimit=ageLimit;
+        this.name = name;
+        this.genre = genre;
+        this.ageLimit = ageLimit;
     }
 
     public String getName() {
