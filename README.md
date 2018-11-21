@@ -1,12 +1,4 @@
 # KinoXP
-
-## Group rules: 
-1. No pu$$y pics.
-2. Well maybe some pu$$y pics.
-3. send bobs and vagene @influenced by Stefanie
-4. never listen to stefan florea man
-5. Do not over work.
-
 ## To contribute to the project do the following steps:
 1. Clone the repo:
     ```
